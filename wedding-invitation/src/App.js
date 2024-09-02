@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import MainImage from './components/MainImage';
 import Paragraph from './components/Paragraph';
+import SaveTheDate from './components/SaveTheDate';
 
 function App() {
   return (
     <Container>
       <MainImage />
       <Paragraph />
+      <SaveTheDate />
     </Container>
   );
 }
