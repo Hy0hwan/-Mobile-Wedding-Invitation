@@ -27,4 +27,5 @@ const StyledImage = styled.img`
   height: 100%;
   object-fit: cover; // 이미지를 컨테이너에 맞게 확장하고 비율 유지
   border-radius: 0; // 둥근 모서리를 없앰
+  box-shadow: none; // 그림자 없앰 (선택 사항)
 `;
