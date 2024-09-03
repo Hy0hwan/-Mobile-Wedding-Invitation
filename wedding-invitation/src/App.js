@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MainImage from './components/MainImage';
 import Paragraph from './components/Paragraph';
 import SaveTheDate from './components/SaveTheDate';
+import Information from './components/Information';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <MainImage />
       <Paragraph />
       <SaveTheDate />
+      <Information />
     </Container>
   );
 }

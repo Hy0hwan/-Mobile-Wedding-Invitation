@@ -16,6 +16,11 @@ const Paragraph = () => {
       <StyledText>
         원태연, <Highlighted>그냥 좋은 것</Highlighted>
       </StyledText>
+      <StyledText>--</StyledText>
+      <StyledText>이희용의 아들 이승원</StyledText>
+      <StyledText>
+        이경희의 <HiddenLetter>ㄱ</HiddenLetter>딸 임소정
+      </StyledText>
     </StyledContainer>
   );
 };
@@ -49,4 +54,9 @@ const StyledText = styled.p`
 const Highlighted = styled.span`
   color: #e74c3c; /* 강조 색상 */
   font-weight: bold;
+`;
+
+// 숨김 문자 스타일
+const HiddenLetter = styled.span`
+  visibility: hidden;
 `;
