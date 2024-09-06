@@ -1,6 +1,15 @@
 import React from 'react';
-import ImageGallery from 'react-image-gallery';
-import 'react-image-gallery/styles/css/image-gallery.css';
+import LightGallery from 'lightgallery/react';
+
+// Styles
+import 'lightgallery/css/lightgallery.css';
+import 'lightgallery/css/lg-fullscreen.css';
+import 'lightgallery/css/lg-zoom.css';
+
+// Plugins
+import lgFullscreen from 'lightgallery/plugins/fullscreen';
+import lgZoom from 'lightgallery/plugins/zoom';
+
 import styled from 'styled-components';
 import img1 from '../assets/imgs/1.jpeg';
 import img2 from '../assets/imgs/2.jpeg';
@@ -14,52 +23,23 @@ import img9 from '../assets/imgs/9.jpeg';
 import img10 from '../assets/imgs/10.jpeg';
 
 const ImgBox = () => {
-  const images = [
-    {
-      original: img1,
-      thumbnail: img1,
-    },
-    {
-      original: img2,
-      thumbnail: img2,
-    },
-    {
-      original: img3,
-      thumbnail: img3,
-    },
-    {
-      original: img4,
-      thumbnail: img4,
-    },
-    {
-      original: img5,
-      thumbnail: img5,
-    },
-    {
-      original: img6,
-      thumbnail: img6,
-    },
-    {
-      original: img7,
-      thumbnail: img7,
-    },
-    {
-      original: img8,
-      thumbnail: img8,
-    },
-    {
-      original: img9,
-      thumbnail: img9,
-    },
-    {
-      original: img10,
-      thumbnail: img10,
-    },
-  ];
+  const images = [img1, img5, img7, img4, img2, img6, img3, img8, img9, img10];
 
   return (
     <Container>
-      <ImageGallery items={images} />
+      <LightGallery
+        plugins={[lgFullscreen, lgZoom]} // 플러그인 추가
+        mode="lg-fade"
+        speed={500}
+        zoom={true}
+        fullscreen={true}
+      >
+        {images.map((image, index) => (
+          <a href={image} key={index}>
+            <img src={image} alt={`Gallery image ${index + 1}`} />
+          </a>
+        ))}
+      </LightGallery>
     </Container>
   );
 };
@@ -68,4 +48,29 @@ export default ImgBox;
 
 const Container = styled.div`
   width: 90%;
+  max-width: 768px;
+  margin: 0 auto;
+  overflow-x: auto; /* 가로 스크롤 추가 */
+
+  /* 가로로 정렬된 썸네일을 flex로 구현 */
+  display: grid;
+  flex-wrap: nowrap; /* 한 줄로 나열 */
+  gap: 10px; /* 썸네일 사이 여백 */
+  padding: 10px 0; /* 상하 패딩 추가 */
+
+  a {
+  }
+
+  img {
+    width: 150px; /* 썸네일 크기 설정 */
+    height: 150px;
+    object-fit: cover; /* 비율 유지 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    transition: transform 0.3s ease, filter 0.3s ease; /* 애니메이션 효과 */
+  }
+
+  img:hover {
+    transform: scale(1.1) rotate(5deg); /* 호버 시 확대 및 회전 효과 */
+    filter: brightness(1.2); /* 호버 시 밝기 증가 효과 */
+  }
 `;

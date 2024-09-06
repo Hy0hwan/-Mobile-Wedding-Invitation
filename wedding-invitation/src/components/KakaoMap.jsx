@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import markimg from '../assets/imgs/3.jpeg';
+import markimg from '../assets/imgs/mark.png';
 
 const KakaoMap = () => {
   useEffect(() => {
