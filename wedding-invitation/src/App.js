@@ -6,6 +6,7 @@ import SaveTheDate from './components/SaveTheDate';
 import Information from './components/Information';
 import ImgBox from './components/ImgBox';
 import KakaoMap from './components/KakaoMap';
+import AccountDetails from './components/AccountDetails';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Information />
       <ImgBox />
       <KakaoMap />
+      <AccountDetails />
     </Container>
   );
 }
