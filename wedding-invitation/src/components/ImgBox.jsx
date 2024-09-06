@@ -59,7 +59,7 @@ const ImgBox = () => {
 
   return (
     <Container>
-      <ImageGallery items={images} />;
+      <ImageGallery items={images} />
     </Container>
   );
 };

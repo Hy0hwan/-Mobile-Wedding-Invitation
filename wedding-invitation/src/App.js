@@ -5,6 +5,7 @@ import Paragraph from './components/Paragraph';
 import SaveTheDate from './components/SaveTheDate';
 import Information from './components/Information';
 import ImgBox from './components/ImgBox';
+import KakaoMap from './components/KakaoMap';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <SaveTheDate />
       <Information />
       <ImgBox />
+      <KakaoMap />
     </Container>
   );
 }
