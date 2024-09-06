@@ -51,8 +51,6 @@ const Container = styled.div`
   max-width: 768px;
   margin: 0 auto;
   overflow-x: auto; /* 가로 스크롤 추가 */
-
-  /* 가로로 정렬된 썸네일을 flex로 구현 */
   display: grid;
   flex-wrap: nowrap; /* 한 줄로 나열 */
   gap: 10px; /* 썸네일 사이 여백 */
@@ -62,8 +60,8 @@ const Container = styled.div`
   }
 
   img {
-    width: 150px; /* 썸네일 크기 설정 */
-    height: 150px;
+    width: 100px; /* 썸네일 크기 설정 */
+    height: 100px;
     object-fit: cover; /* 비율 유지 */
     border-radius: 8px; /* 모서리 둥글게 */
     transition: transform 0.3s ease, filter 0.3s ease; /* 애니메이션 효과 */
