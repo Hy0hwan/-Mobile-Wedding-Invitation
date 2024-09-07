@@ -1,20 +1,8 @@
-import React from 'react';
-import LightGallery from 'lightgallery/react';
-
-// Styles
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-fullscreen.css';
-import 'lightgallery/css/lg-zoom.css';
-
-// Plugins
-import lgFullscreen from 'lightgallery/plugins/fullscreen';
-import lgZoom from 'lightgallery/plugins/zoom';
-
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import img1 from '../assets/imgs/1.jpeg';
 import img2 from '../assets/imgs/2.jpeg';
 import img3 from '../assets/imgs/3.jpeg';
-import img4 from '../assets/imgs/4.png';
 import img5 from '../assets/imgs/5.jpeg';
 import img6 from '../assets/imgs/6.jpeg';
 import img7 from '../assets/imgs/7.jpeg';
@@ -22,53 +10,95 @@ import img8 from '../assets/imgs/8.jpeg';
 import img9 from '../assets/imgs/9.jpeg';
 import img10 from '../assets/imgs/10.jpeg';
 
-const ImgBox = () => {
-  const images = [img1, img5, img7, img4, img2, img6, img3, img8, img9, img10];
+const ImageGallery = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const images = [img1, img5, img7, img2, img6, img3, img8, img9, img10];
+
+  // 이미지 클릭 시 라이트박스(모달) 띄우기
+  const openImage = (image) => {
+    setSelectedImage(image);
+  };
+
+  // 라이트박스 닫기
+  const closeImage = () => {
+    setSelectedImage(null);
+  };
 
   return (
-    <Container>
-      <LightGallery
-        plugins={[lgFullscreen, lgZoom]} // 플러그인 추가
-        mode="lg-fade"
-        speed={500}
-        zoom={true}
-        fullscreen={true}
-      >
+    <GalleryContainer>
+      {/* 이미지 그리드 */}
+      <GridContainer>
         {images.map((image, index) => (
-          <a href={image} key={index}>
-            <img src={image} alt={`Gallery image ${index + 1}`} />
-          </a>
+          <Thumbnail key={index} onClick={() => openImage(image)}>
+            <img src={image} alt={`이미지 ${index + 1}`} />
+          </Thumbnail>
         ))}
-      </LightGallery>
-    </Container>
+      </GridContainer>
+
+      {/* 선택한 이미지가 있을 때 라이트박스 모달 */}
+      {selectedImage && (
+        <Lightbox onClick={closeImage}>
+          <img src={selectedImage} alt="확대 이미지" />
+        </Lightbox>
+      )}
+    </GalleryContainer>
   );
 };
 
-export default ImgBox;
+export default ImageGallery;
 
-const Container = styled.div`
+const GalleryContainer = styled.div`
   width: 90%;
   max-width: 768px;
   margin: 0 auto;
-  overflow-x: auto; /* 가로 스크롤 추가 */
-  display: grid;
-  flex-wrap: nowrap; /* 한 줄로 나열 */
-  gap: 10px; /* 썸네일 사이 여백 */
-  padding: 10px 0; /* 상하 패딩 추가 */
+`;
 
-  a {
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3개씩 가로로 배치 */
+  gap: 10px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr); /* 3개씩 가로로 배치 */
   }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(3, 1fr); /* 3개씩 가로로 배치 */
+  }
+`;
+
+const Thumbnail = styled.div`
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
 
   img {
-    width: 100px; /* 썸네일 크기 설정 */
-    height: 100px;
-    object-fit: cover; /* 비율 유지 */
-    border-radius: 8px; /* 모서리 둥글게 */
-    transition: transform 0.3s ease, filter 0.3s ease; /* 애니메이션 효과 */
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
   }
 
-  img:hover {
-    transform: scale(1.1) rotate(5deg); /* 호버 시 확대 및 회전 효과 */
-    filter: brightness(1.2); /* 호버 시 밝기 증가 효과 */
+  &:hover img {
+    transform: scale(1.1); /* 마우스를 올렸을 때 확대 */
+  }
+`;
+
+const Lightbox = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  img {
+    max-width: 90%;
+    max-height: 90%;
   }
 `;
