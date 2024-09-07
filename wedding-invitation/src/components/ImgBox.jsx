@@ -27,7 +27,7 @@ const ImageGallery = () => {
 
   return (
     <GalleryContainer>
-      {/* 이미지 그리드 */}
+      <h2>웨딩 갤러리</h2>
       <GridContainer>
         {images.map((image, index) => (
           <Thumbnail key={index} onClick={() => openImage(image)}>
@@ -70,11 +70,11 @@ const GridContainer = styled.div`
 
 const Thumbnail = styled.div`
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 50%;
   cursor: pointer;
 
   img {
-    width: 100%;
+    width: 150px;
     height: 150px;
     object-fit: cover;
     transition: transform 0.3s ease;
