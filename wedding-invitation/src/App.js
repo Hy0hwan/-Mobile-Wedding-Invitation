@@ -10,6 +10,7 @@ import AccountDetails from './components/AccountDetails';
 
 function App() {
   const [showContent, setShowContent] = useState(false);
+  const [showMainImage, setShowMainImage] = useState(true);
 
   // 스크롤 이벤트 핸들러
   const handleScroll = () => {
@@ -17,6 +18,7 @@ function App() {
     const threshold = window.innerHeight * 0.01;
     if (scrollPosition > threshold) {
       setShowContent(true);
+      setShowMainImage(false); // 스크롤 후 MainImage 언마운트
     }
   };
 
@@ -31,10 +33,10 @@ function App() {
 
   return (
     <Container>
-      <MainImage />
-
+      {showMainImage && <MainImage />} {/* MainImage는 처음에만 렌더링 */}
       {showContent && (
         <Content>
+          <MainImage />
           <Paragraph />
           <SaveTheDate />
           <Information />
