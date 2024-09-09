@@ -59,7 +59,7 @@ const Container = styled.div`
   img,
   iframe {
     max-width: 100%;
-    height: auto;
+    /* height: ; */
   }
 `;
 
