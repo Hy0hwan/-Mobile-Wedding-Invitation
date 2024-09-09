@@ -34,7 +34,7 @@ const AccountDetails = () => {
           <Arrow isOpen={isGroomOpen}>{isGroomOpen ? '▲' : '▼'}</Arrow>
         </AccordionHeader>
         <AccordionContent isOpen={isGroomOpen}>
-          <span>계좌번호: [국민은행] </span>
+          <span>[국민은행] </span>
           <AccountNumber onClick={() => handleCopy(groomAccount)}>
             {groomAccount}
           </AccountNumber>
@@ -48,7 +48,7 @@ const AccountDetails = () => {
           <Arrow isOpen={isBrideOpen}>{isBrideOpen ? '▲' : '▼'}</Arrow>
         </AccordionHeader>
         <AccordionContent isOpen={isBrideOpen}>
-          <span>계좌번호: [국민은행] </span>
+          <span>[국민은행] </span>
           <AccountNumber onClick={() => handleCopy(brideAccount)}>
             {brideAccount}
           </AccountNumber>
