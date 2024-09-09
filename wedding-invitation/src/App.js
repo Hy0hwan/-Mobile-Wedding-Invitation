@@ -17,13 +17,15 @@ function App() {
       <GlobalStyle />
       <Container>
         <MainImage />
-        <Paragraph />
-        <SaveTheDate />
-        <Information />
-        <ImgBox />
-        <KakaoMap />
-        <AccountDetails />
-        <MusicPlayer />
+        <SubContainer>
+          <Paragraph />
+          <SaveTheDate />
+          <Information />
+          <ImgBox />
+          <KakaoMap />
+          <AccountDetails />
+          <MusicPlayer />
+        </SubContainer>
         <Footer />
       </Container>
     </>
@@ -39,12 +41,27 @@ const Container = styled.div`
   align-items: center;
   max-width: 720px;
   margin: 0 auto;
+  gap: 10px;
+  overflow-x: hidden;
+
+  @media (max-width: 768px) {
+    height: auto;
+  }
+`;
+
+const SubContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 720px;
+  margin: 0 auto;
   padding: 10px;
   gap: 10px;
   overflow-x: hidden;
 
   @media (max-width: 768px) {
-    padding: 10px;
     height: auto;
+    padding: 10px;
   }
 `;
