@@ -70,12 +70,12 @@ const GridContainer = styled.div`
 
 const Thumbnail = styled.div`
   overflow: hidden;
-  border-radius: 50%;
+  border-radius: 20px;
   cursor: pointer;
 
   img {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 200px;
     object-fit: cover;
     transition: transform 0.3s ease;
   }

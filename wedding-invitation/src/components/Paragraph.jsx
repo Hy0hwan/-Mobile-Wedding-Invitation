@@ -30,10 +30,10 @@ export default Paragraph;
 // 전체 컨테이너 스타일
 const StyledContainer = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  /* background-color: #ffffff; */
 `;
 
 const StyledImage = styled.img`

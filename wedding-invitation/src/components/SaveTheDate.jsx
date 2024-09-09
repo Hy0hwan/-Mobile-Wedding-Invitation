@@ -52,7 +52,7 @@ const SaveTheDate = () => {
         <DdayMessage>🎉 D-Day! 🎉</DdayMessage>
       ) : (
         <>
-          <Title>결혼식까지 남은 시간</Title>
+          <Title>Save the Date</Title>
           <Countdown>
             <TimeUnit>
               <TimeNumber>{timeLeft.days}</TimeNumber>
@@ -64,15 +64,18 @@ const SaveTheDate = () => {
             </TimeUnit>
             <TimeUnit>
               <TimeNumber>{timeLeft.minutes}</TimeNumber>
-              <TimeLabel>Minutes</TimeLabel>
+              <TimeLabel>Min</TimeLabel>
             </TimeUnit>
             <TimeUnit>
               <TimeNumber>{timeLeft.seconds}</TimeNumber>
-              <TimeLabel>Seconds</TimeLabel>
+              <TimeLabel>Sec</TimeLabel>
             </TimeUnit>
           </Countdown>
         </>
       )}
+      <Comment>
+        승원 ❤️ 소정의 결혼식이 {timeLeft.days + 1}일 남았습니다.
+      </Comment>
     </Container>
   );
 };
@@ -84,7 +87,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #f7f7f7;
   padding: 20px;
 `;
 
@@ -92,6 +94,12 @@ const Title = styled.h1`
   font-size: 2rem;
   margin-bottom: 20px;
   color: #333;
+`;
+
+const Comment = styled.p`
+  font-size: 1.2rem;
+  color: #333; /* 텍스트 색상을 기본 회색으로 설정 */
+  margin-top: 20px; /* 위쪽 여백 추가 */
 `;
 
 const Countdown = styled.div`
@@ -102,7 +110,7 @@ const Countdown = styled.div`
 const TimeUnit = styled.div`
   text-align: center;
   font-size: 1.5rem;
-  background-color: #fff;
+  background-color: #f5f5f5;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
