@@ -31,9 +31,7 @@ function App() {
 
   return (
     <Container>
-      <FullScreenMainImage>
-        <MainImage />
-      </FullScreenMainImage>
+      <MainImage />
 
       {showContent && (
         <Content>
@@ -66,20 +64,6 @@ const Container = styled.div`
     padding: 10px;
     height: auto;
   }
-
-  img,
-  iframe {
-    max-width: 100%;
-    /* height: ; */
-  }
-`;
-
-const FullScreenMainImage = styled.div`
-  width: 100%;
-  height: 100vh; /* 화면 전체를 차지 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const Content = styled.div`
