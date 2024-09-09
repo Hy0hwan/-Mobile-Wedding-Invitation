@@ -93,12 +93,12 @@ const Container = styled.div`
 
 const MapContainer = styled.div`
   width: 100%;
-  height: 500px;
+  height: 400px;
 `;
 
 const RoadMapImage = styled.img`
   width: 100%;
-  height: 500px;
+  height: 400px;
   object-fit: cover;
 `;
 
@@ -117,7 +117,7 @@ const Button = styled.button`
   margin: 0 10px;
   border-radius: 25px; /* 버튼의 모서리를 둥글게 */
   cursor: pointer;
-  font-size: 16px;
+  font-size: 13px;
   font-family: 'BMJUA', sans-serif; /* 버튼에 폰트 적용 */
   transition: background-color 0.3s ease, transform 0.3s ease;
 
