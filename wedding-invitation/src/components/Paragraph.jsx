@@ -34,11 +34,12 @@ const StyledContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  margin-top: 50px;
 `;
 
 const StyledImage = styled.img`
   width: 100%;
-  height: 50vh;
+  height: 70%;
 `;
 
 // 텍스트 스타일
