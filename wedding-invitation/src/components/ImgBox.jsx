@@ -75,7 +75,7 @@ const Thumbnail = styled.div`
 
   img {
     width: 100%;
-    height: 200px;
+    height: 150px;
     object-fit: cover;
     transition: transform 0.3s ease;
   }
