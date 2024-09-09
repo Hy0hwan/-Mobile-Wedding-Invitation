@@ -45,7 +45,7 @@ const Container = styled.div`
   overflow-x: hidden;
 
   @media (max-width: 768px) {
-    height: auto;
+    /* height: auto; */
   }
 `;
 
@@ -61,7 +61,7 @@ const SubContainer = styled.div`
   overflow-x: hidden;
 
   @media (max-width: 768px) {
-    height: auto;
+    /* height: auto; */
     padding: 10px;
   }
 `;
