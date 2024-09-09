@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import MainImage from './components/MainImage';
 import Paragraph from './components/Paragraph';
@@ -9,39 +9,15 @@ import KakaoMap from './components/KakaoMap';
 import AccountDetails from './components/AccountDetails';
 
 function App() {
-  const [showContent, setShowContent] = useState(false);
-
-  const handleScroll = () => {
-    const scrollPosition = window.scrollY;
-    const threshold = window.innerHeight * 0.3; // 스크롤이 화면의 30% 지점에 도달하면 콘텐츠 표시
-    console.log(`Scroll Position: ${scrollPosition}, Threshold: ${threshold}`);
-
-    if (scrollPosition > threshold) {
-      setShowContent(true);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <Container>
       <MainImage />
-      {showContent && (
-        <Content>
-          <Paragraph />
-          <SaveTheDate />
-          <Information />
-          <ImgBox />
-          <KakaoMap />
-          <AccountDetails />
-        </Content>
-      )}
+      <Paragraph />
+      <SaveTheDate />
+      <Information />
+      <ImgBox />
+      <KakaoMap />
+      <AccountDetails />
     </Container>
   );
 }
@@ -50,33 +26,23 @@ export default App;
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* 세로 정렬 */
   justify-content: center;
   align-items: center;
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 720px; /* 최대 768px로 설정 */
+  margin: 0 auto; /* 가운데 정렬 */
+  padding: 10px; /* 내용물과 컨테이너 사이 여백 추가 */
   gap: 10px;
-  overflow-x: hidden;
+  overflow-x: hidden; /* 가로 스크롤 방지 */
 
   @media (max-width: 768px) {
-    padding: 10px;
+    padding: 10px; /* 모바일에서 여백을 조금 줄임 */
     height: auto;
   }
 
   img,
   iframe {
-    max-width: 100%;
-    height: auto;
+    max-width: 100%; /* 이미지 및 iframe 요소의 너비를 100%로 제한 */
+    height: auto; /* 높이를 자동으로 맞춤 */
   }
-`;
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 720px;
-  margin: 0 auto;
-  gap: 10px;
 `;
