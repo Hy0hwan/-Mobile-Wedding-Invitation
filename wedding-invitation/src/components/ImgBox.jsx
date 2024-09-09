@@ -31,9 +31,11 @@ const ImgBox = () => {
       <Header>웨딩 갤러리</Header>
       <GridContainer>
         {images.map((image, index) => (
-          <Thumbnail key={index} onClick={() => openImage(image)}>
-            <img src={image} alt={`이미지 ${index + 1}`} />
-          </Thumbnail>
+          <Thumbnail
+            key={index}
+            image={image}
+            onClick={() => openImage(image)}
+          />
         ))}
       </GridContainer>
 
@@ -82,25 +84,21 @@ const GridContainer = styled.div`
 
 const Thumbnail = styled.div`
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 50%;
   cursor: pointer;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+  width: 150px;
+  height: 150px; /* 썸네일 크기 고정 */
 
-  img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
+  /* 이미지 배경으로 설정 */
+  background-image: url(${(props) => props.image});
+  background-size: cover;
+  background-position: center;
 
   &:hover {
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
-  }
-
-  &:hover img {
-    transform: scale(1.15);
   }
 `;
 
