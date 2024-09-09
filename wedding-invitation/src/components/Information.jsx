@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import styled from 'styled-components';
-import DatePicker from 'react-datepicker';
+// import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const Information = () => {
-  const fixedDate = new Date(2024, 10, 16); // 2024년 11월 16일
-  const [startDate, setStartDate] = useState(fixedDate);
+  // const fixedDate = new Date(2024, 10, 16); // 2024년 11월 16일
+  // const [startDate, setStartDate] = useState(fixedDate);
 
   return (
     <Container>

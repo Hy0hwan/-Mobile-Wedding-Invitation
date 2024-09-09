@@ -25,7 +25,7 @@ const Footer = () => {
         objectType: 'feed',
         content: {
           title: '승원 ❤️ 소정 결혼합니다!',
-          description: '웨딩 초대장 링크를 확인하세요!',
+          description: '우리의 결혼을 축하해주세요 🥰',
           imageUrl:
             'https://nurim-data-origin.s3.ap-northeast-2.amazonaws.com/%EB%B0%B0%EB%84%88/main.jpeg', // 여기에 자신의 이미지 URL을 입력하세요.
           link: {
