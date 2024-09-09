@@ -9,6 +9,7 @@ import KakaoMap from './components/KakaoMap';
 import AccountDetails from './components/AccountDetails';
 import GlobalStyle from './components/GlobalStyle';
 import MusicPlayer from './components/MusicPlayer';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <KakaoMap />
         <AccountDetails />
         <MusicPlayer />
+        <Footer />
       </Container>
     </>
   );
