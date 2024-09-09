@@ -9,42 +9,15 @@ import KakaoMap from './components/KakaoMap';
 import AccountDetails from './components/AccountDetails';
 
 function App() {
-  const [showContent, setShowContent] = useState(false);
-  const [showMainImage, setShowMainImage] = useState(true);
-
-  // 스크롤 이벤트 핸들러
-  const handleScroll = () => {
-    const scrollPosition = window.scrollY;
-    const threshold = window.innerHeight * 0.01;
-    if (scrollPosition > threshold) {
-      setShowContent(true);
-      setShowMainImage(false); // 스크롤 후 MainImage 언마운트
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <Container>
-      {showMainImage && <MainImage />} {/* MainImage는 처음에만 렌더링 */}
-      {showContent && (
-        <Content>
-          <MainImage />
-          <Paragraph />
-          <SaveTheDate />
-          <Information />
-          <ImgBox />
-          <KakaoMap />
-          <AccountDetails />
-        </Content>
-      )}
+      <MainImage />
+      <Paragraph />
+      <SaveTheDate />
+      <Information />
+      <ImgBox />
+      <KakaoMap />
+      <AccountDetails />
     </Container>
   );
 }
