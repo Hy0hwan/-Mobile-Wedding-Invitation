@@ -31,7 +31,7 @@ const AccountDetails = () => {
       <Accordion>
         <AccordionHeader onClick={() => setIsGroomOpen(!isGroomOpen)}>
           신랑 측 계좌
-          <Arrow>{isGroomOpen ? '▲' : '▼'}</Arrow>
+          <Arrow isOpen={isGroomOpen}>{isGroomOpen ? '▲' : '▼'}</Arrow>
         </AccordionHeader>
         <AccordionContent isOpen={isGroomOpen}>
           <span>계좌번호: </span>
@@ -45,7 +45,7 @@ const AccountDetails = () => {
       <Accordion>
         <AccordionHeader onClick={() => setIsBrideOpen(!isBrideOpen)}>
           신부 측 계좌
-          <Arrow>{isBrideOpen ? '▲' : '▼'}</Arrow>
+          <Arrow isOpen={isBrideOpen}>{isBrideOpen ? '▲' : '▼'}</Arrow>
         </AccordionHeader>
         <AccordionContent isOpen={isBrideOpen}>
           <span>계좌번호: </span>
@@ -56,7 +56,7 @@ const AccountDetails = () => {
       </Accordion>
 
       {/* 토스트 메시지 */}
-      <Toast visible={copied}>계좌번호가 복사되었습니다!</Toast>
+      <Toast visible={copied}>클립보드에 복사되었습니다!</Toast>
     </Container>
   );
 };
@@ -91,10 +91,11 @@ const AccordionHeader = styled.div`
   padding: 15px 20px;
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* 가운데 정렬 */
   align-items: center;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center; /* 텍스트 가운데 정렬 */
 
   &:hover {
     background-color: #0056b3;
@@ -111,6 +112,7 @@ const AccordionContent = styled.div`
   color: #555;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: padding 0.3s ease, height 0.3s ease;
+  text-align: center; /* 텍스트 가운데 정렬 */
 `;
 
 const Arrow = styled.span`
@@ -143,7 +145,7 @@ const Toast = styled.div`
   color: white;
   padding: 12px 24px;
   border-radius: 25px;
-  font-size: 14px;
+  font-size: 13px;
   transition: bottom 0.3s ease-in-out;
   opacity: ${({ visible }) => (visible ? 1 : 0)}; /* 나타날 때 투명도 */
 `;

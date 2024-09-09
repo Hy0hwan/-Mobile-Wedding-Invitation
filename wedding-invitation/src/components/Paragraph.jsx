@@ -5,7 +5,7 @@ import paragraphImage from '../assets/paragraph.jpeg';
 const Paragraph = () => {
   return (
     <StyledContainer>
-      <StyledText>우리, 결혼합니다.</StyledText>
+      <StyledTextHead>우리, 결혼합니다.</StyledTextHead>
       <StyledImage src={paragraphImage} alt="" />
       <StyledText>그냥 좋은 것이</StyledText>
       <StyledText>가장 좋은 것입니다.</StyledText>
@@ -14,7 +14,7 @@ const Paragraph = () => {
       <StyledText>그냥 좋은 것이</StyledText>
       <StyledText>그저 좋은 것입니다.</StyledText>
       <StyledText>
-        원태연, <Highlighted>그냥 좋은 것</Highlighted>
+        원태연, <Highlighted>&lt;그냥 좋은 것&gt;</Highlighted>
       </StyledText>
       <StyledText>--</StyledText>
       <StyledText>이희용의 아들 이승원</StyledText>
@@ -42,6 +42,13 @@ const StyledImage = styled.img`
   height: 70%;
 `;
 
+const StyledTextHead = styled.p`
+  font-size: 24px;
+  line-height: 1.6;
+  margin: 10px 0;
+  text-align: center; /* 각 줄을 가운데 정렬 */
+  color: #333;
+`;
 // 텍스트 스타일
 const StyledText = styled.p`
   font-size: 18px;

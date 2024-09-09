@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import MainImage from './components/MainImage';
 import Paragraph from './components/Paragraph';
@@ -7,18 +7,22 @@ import Information from './components/Information';
 import ImgBox from './components/ImgBox';
 import KakaoMap from './components/KakaoMap';
 import AccountDetails from './components/AccountDetails';
+import GlobalStyle from './components/GlobalStyle';
 
 function App() {
   return (
-    <Container>
-      <MainImage />
-      <Paragraph />
-      <SaveTheDate />
-      <Information />
-      <ImgBox />
-      <KakaoMap />
-      <AccountDetails />
-    </Container>
+    <>
+      <GlobalStyle />
+      <Container>
+        <MainImage />
+        <Paragraph />
+        <SaveTheDate />
+        <Information />
+        <ImgBox />
+        <KakaoMap />
+        <AccountDetails />
+      </Container>
+    </>
   );
 }
 
@@ -39,13 +43,4 @@ const Container = styled.div`
     padding: 10px;
     height: auto;
   }
-`;
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
 `;

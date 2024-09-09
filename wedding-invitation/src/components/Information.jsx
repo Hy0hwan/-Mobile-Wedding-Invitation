@@ -41,9 +41,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: #f5f5f5;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   margin: 0 auto;
 `;
@@ -52,14 +50,12 @@ const Title = styled.h1`
   font-size: 24px;
   color: #333;
   margin-bottom: 20px;
-  font-family: 'Arial', sans-serif;
 `;
 
 const InfoText = styled.p`
   font-size: 18px;
   color: #555;
   margin: 5px 0;
-  font-family: 'Arial', sans-serif;
 `;
 
 const CalendarContainer = styled.div`

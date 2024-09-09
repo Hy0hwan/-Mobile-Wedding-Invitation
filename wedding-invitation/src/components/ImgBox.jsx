@@ -52,6 +52,7 @@ const GalleryContainer = styled.div`
   width: 90%;
   max-width: 768px;
   margin: 0 auto;
+  text-align: center; /* 제목을 가운데 정렬 */
 `;
 
 const GridContainer = styled.div`

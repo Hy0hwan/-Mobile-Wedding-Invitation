@@ -55,18 +55,15 @@ const KakaoMap = () => {
 
   return (
     <Container>
-      {/* 버튼 추가 */}
-      <ButtonContainer>
-        <Button onClick={() => setIsMapVisible(true)}>지도로 보기</Button>
-        <Button onClick={() => setIsMapVisible(false)}>약도로 보기</Button>
-      </ButtonContainer>
-
-      {/* 지도 또는 약도 이미지 표시 */}
       {isMapVisible ? (
         <MapContainer id="map" />
       ) : (
         <RoadMapImage src={roadImg} alt="약도 이미지" />
       )}
+      <ButtonContainer>
+        <Button onClick={() => setIsMapVisible(true)}>지도로 보기</Button>
+        <Button onClick={() => setIsMapVisible(false)}>약도로 보기</Button>
+      </ButtonContainer>
     </Container>
   );
 };
@@ -92,10 +89,11 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
+  margin-top: 20px;
 `;
 
 const Button = styled.button`
-  background-color: #4caf50;
+  background-color: #d26095;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -103,8 +101,9 @@ const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  font-family: 'BMJUA', sans-serif; /* 버튼에 폰트 적용 */
 
   &:hover {
-    background-color: #45a049;
+    background-color: #cfa039;
   }
 `;
