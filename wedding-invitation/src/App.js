@@ -30,7 +30,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%; /* 화면에 맞춰 유연하게 조정 */
-  /* max-width: 720px; */
+  max-width: 720px;
   margin: 0 auto; /* 가운데 정렬 */
   padding: 20px; /* 내용물과 컨테이너 사이 여백 추가 */
   gap: 10px;
