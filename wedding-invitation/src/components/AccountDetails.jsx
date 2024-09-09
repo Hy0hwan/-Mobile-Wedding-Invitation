@@ -31,7 +31,7 @@ const AccountDetails = () => {
       <Accordion>
         <AccordionHeader onClick={() => setIsGroomOpen(!isGroomOpen)}>
           신랑 측 계좌
-          <Arrow isOpen={isGroomOpen}>{isGroomOpen ? '▲' : '▼'}</Arrow>
+          <Arrow isOpen={isGroomOpen}></Arrow>
         </AccordionHeader>
         <AccordionContent isOpen={isGroomOpen}>
           <span>[국민은행] </span>
@@ -45,7 +45,7 @@ const AccountDetails = () => {
       <Accordion>
         <AccordionHeader onClick={() => setIsBrideOpen(!isBrideOpen)}>
           신부 측 계좌
-          <Arrow isOpen={isBrideOpen}>{isBrideOpen ? '▲' : '▼'}</Arrow>
+          <Arrow isOpen={isBrideOpen}></Arrow>
         </AccordionHeader>
         <AccordionContent isOpen={isBrideOpen}>
           <span>[국민은행] </span>
