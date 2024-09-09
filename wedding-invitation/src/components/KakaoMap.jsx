@@ -54,7 +54,7 @@ const KakaoMap = () => {
   }, [isMapVisible]); // isMapVisible이 변경될 때마다 실행
 
   return (
-    <div>
+    <Container>
       {/* 버튼 추가 */}
       <ButtonContainer>
         <Button onClick={() => setIsMapVisible(true)}>지도로 보기</Button>
@@ -67,11 +67,15 @@ const KakaoMap = () => {
       ) : (
         <RoadMapImage src={roadImg} alt="약도 이미지" />
       )}
-    </div>
+    </Container>
   );
 };
 
 export default KakaoMap;
+
+const Container = styled.div`
+  width: 100%;
+`;
 
 const MapContainer = styled.div`
   width: 100%;

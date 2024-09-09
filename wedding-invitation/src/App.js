@@ -34,9 +34,7 @@ const Container = styled.div`
   margin: 0 auto; /* 가운데 정렬 */
   padding: 20px; /* 내용물과 컨테이너 사이 여백 추가 */
   gap: 10px;
-
-  /* 상위 요소가 가로 스크롤 생기지 않도록 설정 */
-  overflow-x: hidden;
+  overflow-x: hidden; /* 가로 스크롤 방지 */
 
   @media (max-width: 768px) {
     padding: 10px; /* 모바일에서 여백을 조금 줄임 */
