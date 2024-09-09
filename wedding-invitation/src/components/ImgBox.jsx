@@ -10,7 +10,7 @@ import img8 from '../assets/imgs/8.jpeg';
 import img9 from '../assets/imgs/9.jpeg';
 import img10 from '../assets/imgs/10.jpeg';
 
-const ImageGallery = () => {
+const ImgBox = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const images = [img1, img5, img7, img2, img6, img3, img8, img9, img10];
@@ -27,7 +27,7 @@ const ImageGallery = () => {
 
   return (
     <GalleryContainer>
-      <h2>웨딩 갤러리</h2>
+      <Header>웨딩 갤러리</Header>
       <GridContainer>
         {images.map((image, index) => (
           <Thumbnail key={index} onClick={() => openImage(image)}>
@@ -46,13 +46,22 @@ const ImageGallery = () => {
   );
 };
 
-export default ImageGallery;
+export default ImgBox;
 
 const GalleryContainer = styled.div`
   width: 90%;
   max-width: 768px;
   margin: 0 auto;
   text-align: center; /* 제목을 가운데 정렬 */
+`;
+const Header = styled.p`
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  position: relative;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  font-weight: bold;
 `;
 
 const GridContainer = styled.div`

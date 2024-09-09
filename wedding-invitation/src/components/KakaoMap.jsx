@@ -69,6 +69,7 @@ const KakaoMap = () => {
 
   return (
     <Container>
+      <Header>오시는길</Header>
       {isMapVisible ? (
         <MapContainer id="map" />
       ) : (
@@ -89,6 +90,16 @@ export default KakaoMap;
 const Container = styled.div`
   width: 100%;
   margin-top: 50px;
+`;
+
+const Header = styled.p`
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  position: relative;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  font-weight: bold;
 `;
 
 const MapContainer = styled.div`

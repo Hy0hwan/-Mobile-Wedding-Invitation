@@ -20,8 +20,8 @@ const AccountDetails = () => {
   };
 
   // 신랑, 신부 계좌 정보
-  const groomAccount = '123-456-7890'; // 신랑 계좌번호
-  const brideAccount = '987-654-3210'; // 신부 계좌번호
+  const groomAccount = '933-502-0025-1261'; // 신랑 계좌번호
+  const brideAccount = '933-502-0025-1261'; // 신부 계좌번호
 
   return (
     <Container>
@@ -34,7 +34,7 @@ const AccountDetails = () => {
           <Arrow isOpen={isGroomOpen}>{isGroomOpen ? '▲' : '▼'}</Arrow>
         </AccordionHeader>
         <AccordionContent isOpen={isGroomOpen}>
-          <span>계좌번호: </span>
+          <span>계좌번호: [국민은행] </span>
           <AccountNumber onClick={() => handleCopy(groomAccount)}>
             {groomAccount}
           </AccountNumber>
@@ -48,7 +48,7 @@ const AccountDetails = () => {
           <Arrow isOpen={isBrideOpen}>{isBrideOpen ? '▲' : '▼'}</Arrow>
         </AccordionHeader>
         <AccordionContent isOpen={isBrideOpen}>
-          <span>계좌번호: </span>
+          <span>계좌번호: [국민은행] </span>
           <AccountNumber onClick={() => handleCopy(brideAccount)}>
             {brideAccount}
           </AccountNumber>
@@ -86,7 +86,7 @@ const Accordion = styled.div`
 const AccordionHeader = styled.div`
   font-size: 18px;
   font-weight: bold;
-  background-color: #007bff;
+  background-color: #4a90e2; /* 더 세련된 파란색 */
   color: white;
   padding: 15px 20px;
   cursor: pointer;
@@ -98,7 +98,7 @@ const AccordionHeader = styled.div`
   text-align: center; /* 텍스트 가운데 정렬 */
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #357abd; /* 버튼 호버 색상 */
   }
 `;
 

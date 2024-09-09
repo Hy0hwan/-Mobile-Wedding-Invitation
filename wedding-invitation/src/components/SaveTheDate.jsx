@@ -52,7 +52,7 @@ const SaveTheDate = () => {
         <DdayMessage>🎉 D-Day! 🎉</DdayMessage>
       ) : (
         <>
-          <Title>Save the Date</Title>
+          <Header>결혼식 까지</Header>
           <Countdown>
             <TimeUnit>
               <TimeNumber>{timeLeft.days}</TimeNumber>
@@ -90,10 +90,14 @@ const Container = styled.div`
   padding: 20px;
 `;
 
-const Title = styled.h1`
-  font-size: 2rem;
-  margin-bottom: 20px;
+const Header = styled.p`
+  text-align: center;
+  font-size: 24px;
   color: #333;
+  position: relative;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  font-weight: bold;
 `;
 
 const Comment = styled.p`

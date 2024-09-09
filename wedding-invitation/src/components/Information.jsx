@@ -9,11 +9,11 @@ const Information = () => {
 
   return (
     <Container>
-      <Title>예식 안내</Title>
-      <InfoText>2024년 11월 16일 토요일 오후 05:30</InfoText>
+      <Header>예식 안내</Header>
+      <InfoText>2024년 11월 16일 토요일 오후 05:20</InfoText>
       <InfoText>그레이스파티</InfoText>
-      {/* 
-      <CalendarContainer>
+
+      {/* <CalendarContainer>
         <DatePicker
           selected={startDate}
           onChange={(date) => setStartDate(date)}
@@ -40,77 +40,75 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 400px;
-  margin: 0 auto;
+  padding: 30px;
+
+  max-width: 600px;
+  margin: 20px auto;
 `;
 
-const Title = styled.h1`
-  font-size: 24px;
+const Header = styled.h2`
+  text-align: center;
+  font-size: 28px;
   color: #333;
+  position: relative;
   margin-bottom: 20px;
+  padding-bottom: 10px;
+  font-weight: 600;
 `;
 
 const InfoText = styled.p`
   font-size: 18px;
-  color: #555;
-  margin: 5px 0;
+  color: #666;
+  margin: 10px 0;
+  font-weight: 300;
 `;
 
-const CalendarContainer = styled.div`
-  margin-top: 20px;
+// const CalendarContainer = styled.div`
+//   margin-top: 20px;
 
-  .react-datepicker {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-family: 'Arial', sans-serif;
-  }
+//   .react-datepicker {
+//     border: none;
+//     border-radius: 12px;
+//     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+//     font-family: 'Arial', sans-serif;
+//     background: #fff;
+//   }
 
-  .react-datepicker__header {
-    background-color: #ff4500;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    color: white;
-    border: none;
-    padding: 10px;
-  }
+//   .react-datepicker__header {
+//     background-color: #ff4500;
+//     border: none;
+//     color: white;
+//     border-radius: 12px 12px 0 0;
+//     padding: 10px;
+//     font-weight: 600;
+//   }
 
-  .react-datepicker__current-month {
-    font-size: 18px;
-    font-weight: bold;
-  }
+//   .react-datepicker__current-month {
+//     font-size: 20px;
+//   }
 
-  .react-datepicker__day {
-    border-radius: 50%;
-  }
+//   .react-datepicker__day {
+//     border-radius: 50%;
+//     color: #333;
+//   }
 
-  .react-datepicker__day--highlighted {
-    background-color: #ff4500;
-    color: white;
-    border-radius: 50%;
-  }
+//   .react-datepicker__day--highlighted {
+//     background-color: #ff4500;
+//     color: white;
+//   }
 
-  .react-datepicker__day--selected {
-    background-color: #ff4500;
-    color: white;
-    border-radius: 50%;
-  }
+//   .react-datepicker__day--selected {
+//     background-color: #ff4500;
+//     color: white;
+//   }
 
-  .react-datepicker__day--keyboard-selected {
-    background-color: #ff4500;
-    color: white;
-    border-radius: 50%;
-  }
+//   .react-datepicker__day--keyboard-selected {
+//     background-color: #ff4500;
+//     color: white;
+//   }
 
-  .react-datepicker__day--disabled {
-    background-color: #e0e0e0;
-    color: #bdbdbd;
-  }
-
-  .custom-calendar .react-datepicker__day--disabled {
-    background-color: #e0e0e0;
-    color: #bdbdbd;
-  }
-`;
+//   .react-datepicker__day--disabled {
+//     background-color: #f0f0f0;
+//     color: #bdbdbd;
+//   }
+// `;
