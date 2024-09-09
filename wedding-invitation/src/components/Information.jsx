@@ -12,7 +12,7 @@ const Information = () => {
       <Title>예식 안내</Title>
       <InfoText>2024년 11월 16일 토요일 오후 05:30</InfoText>
       <InfoText>그레이스파티</InfoText>
-
+      {/* 
       <CalendarContainer>
         <DatePicker
           selected={startDate}
@@ -28,7 +28,7 @@ const Information = () => {
           dropdownMode="select"
           calendarClassName="custom-calendar"
         />
-      </CalendarContainer>
+      </CalendarContainer> */}
     </Container>
   );
 };
