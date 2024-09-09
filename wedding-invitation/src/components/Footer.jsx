@@ -11,7 +11,7 @@ const Footer = () => {
     document.head.appendChild(script);
 
     script.onload = () => {
-      window.Kakao.init('c2a7efad4c20eb7a22a24670f5aee20d'); // 여기에 자신의 Kakao 앱 키를 입력하세요.
+      window.Kakao.init('27052909e8dc72ccf5fcc28a97d070b9'); // 여기에 자신의 Kakao 앱 키를 입력하세요.
     };
 
     return () => {
