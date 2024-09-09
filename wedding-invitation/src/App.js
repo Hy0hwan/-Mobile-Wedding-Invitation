@@ -29,9 +29,9 @@ const Container = styled.div`
   flex-direction: column; /* 세로 정렬 */
   justify-content: center;
   align-items: center;
-  max-width: 720px;
+  max-width: 720px; /* 최대 768px로 설정 */
   margin: 0 auto; /* 가운데 정렬 */
-  padding: 20px; /* 내용물과 컨테이너 사이 여백 추가 */
+  padding: 10px; /* 내용물과 컨테이너 사이 여백 추가 */
   gap: 10px;
   overflow-x: hidden; /* 가로 스크롤 방지 */
 
