@@ -51,12 +51,10 @@ export default Footer;
 
 const FooterContainer = styled.div`
   width: 100%;
-  background-color: #000;
   padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.3);
 `;
 
 const ShareButton = styled.button`
