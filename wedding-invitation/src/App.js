@@ -8,6 +8,7 @@ import ImgBox from './components/ImgBox';
 import KakaoMap from './components/KakaoMap';
 import AccountDetails from './components/AccountDetails';
 import GlobalStyle from './components/GlobalStyle';
+import MusicPlayer from './components/MusicPlayer';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <ImgBox />
         <KakaoMap />
         <AccountDetails />
+        <MusicPlayer />
       </Container>
     </>
   );
