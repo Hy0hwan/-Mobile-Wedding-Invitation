@@ -10,6 +10,7 @@ import AccountDetails from './components/AccountDetails';
 import GlobalStyle from './components/GlobalStyle';
 import MusicPlayer from './components/MusicPlayer';
 import Footer from './components/Footer';
+import FireworksEffect from './components/FireworksEffect';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <GlobalStyle />
       <Container>
         <MainImage />
+        <FireworksEffect />
         <SubContainer>
           <Paragraph />
           <SaveTheDate />
