@@ -4,7 +4,7 @@ import markimg from '../assets/imgs/mark.png';
 import roadImg from '../assets/imgs/roadmap.jpg'; // 약도 이미지
 
 const KakaoMap = () => {
-  const [isMapVisible, setIsMapVisible] = useState(true); // true면 지도, false면 약도 이미지
+  const [isMapVisible, setIsMapVisible] = useState(false); // true면 지도, false면 약도 이미지
   const mapUrl = '서울특별시 관악구 신림동 1485-1번지';
   const [copied, setCopied] = useState(false);
 
