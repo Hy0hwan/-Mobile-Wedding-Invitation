@@ -5,14 +5,24 @@ const FireworksEffect = () => {
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
-    // 컴포넌트가 렌더링될 때 바로 폭죽 시작
     setIsRunning(true);
-    const timer = setTimeout(() => setIsRunning(false), 7000); // 7초 후 폭죽 종료
+    const timer = setTimeout(() => setIsRunning(false), 9000); // 7초 후 폭죽 종료
 
-    return () => clearTimeout(timer); // 컴포넌트가 언마운트될 때 타이머 정리
+    return () => clearTimeout(timer);
   }, []);
 
-  return <>{isRunning && <Confetti />}</>;
+  return (
+    <>
+      {isRunning && (
+        <Confetti
+          numberOfPieces={100} // 컨페티 조각 수 (기본값 200)
+          colors={['#ffb3ba', '#ffdfba', '#bae1ff', '#c7ceea', '#b5ead7']} // 파스텔톤 색상 배열
+          gravity={0.05} // 컨페티가 떨어지는 속도
+          wind={0.01} // 컨페티가 흩날리는 정도
+        />
+      )}
+    </>
+  );
 };
 
 export default FireworksEffect;
