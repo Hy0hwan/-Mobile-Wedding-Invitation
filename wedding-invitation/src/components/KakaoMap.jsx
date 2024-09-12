@@ -81,6 +81,35 @@ const KakaoMap = () => {
         <Button onClick={() => setIsMapVisible(false)}>약도로 보기</Button>
         <Button onClick={() => handleCopy(mapUrl)}>주소 복사</Button>
       </ButtonContainer>
+
+      <ExplanContainer>
+        <ExplanHeader>📍주소</ExplanHeader>
+        <Explan>서울시 관악구 남부순환로 1440</Explan>
+        <Explan>[관악구 신림동 1485-1번지]</Explan>
+        <ExplanHeader>🚦교통편</ExplanHeader>
+        <ExplanWrapper>
+          <Explan>자가용 : </Explan>
+          <ExplanDetail>시흥 IC방향 시 유턴 / 사당 방향 시 직진</ExplanDetail>
+        </ExplanWrapper>
+        <ExplanWrapper>
+          <Explan>지하철 : </Explan>
+          <ExplanDetail>신림역 5번출구 셔틀 버스 운행</ExplanDetail>
+        </ExplanWrapper>
+        <ExplanWrapper>
+          <Explan>버스 : </Explan>
+          <ExplanList>
+            <ExplanDetail>500번 / 504번 / 643번 / 651번</ExplanDetail>
+            <ExplanDetail>5413번 / 5528번 / 5530번 / 5535번</ExplanDetail>
+            <ExplanDetail>5615번 / 5616번 / 6512번</ExplanDetail>
+            <ExplanDetail>9번 / 9-3번</ExplanDetail>
+            <ExplanDetail>
+              정거장 : 관악구 보훈회관 (신림 푸르지오)
+            </ExplanDetail>
+          </ExplanList>
+        </ExplanWrapper>
+        <ExplanHeader>💁INFO</ExplanHeader>
+        <ExplanDetail>TEL : 02-858-1122</ExplanDetail>
+      </ExplanContainer>
       <Toast visible={copied}>클립보드에 복사되었습니다!</Toast>
     </Container>
   );
@@ -110,6 +139,40 @@ const HeadEn = styled.p`
   margin-top: -15px;
   color: #bbb;
   text-align: center;
+`;
+
+const ExplanContainer = styled.div`
+  text-align: left;
+  padding: 0 20px; /* 좌우 여백 추가 */
+`;
+
+const ExplanHeader = styled.p`
+  color: #bbb;
+  font-size: 15px;
+  margin: 20px 0 10px; /* 상단 여백과 하단 여백 조정 */
+`;
+
+const Explan = styled.p`
+  color: #333;
+  font-size: 12px;
+  margin-left: 10px; /* 텍스트와 구분을 위한 여백 */
+`;
+
+const ExplanWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+`;
+
+const ExplanDetail = styled.p`
+  color: #333;
+  font-size: 12px;
+  margin-left: 10px; /* 레이블과 텍스트 간의 여백 */
+  flex: 1; /* 레이블과 상세 내용 사이에 여백을 추가 */
+`;
+
+const ExplanList = styled.div`
+  margin-left: 10px; /* 리스트 항목과 레이블 간의 여백 */
 `;
 
 const MapContainer = styled.div`

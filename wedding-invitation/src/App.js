@@ -36,7 +36,8 @@ function App() {
           </AnimatedComponent>
           <Divider />
           <AnimatedComponent>
-            <ImgBox />
+            {/* <ImgBox /> */}
+            <h2>- 점 검 중 -</h2>
           </AnimatedComponent>
           <Divider />
           <AnimatedComponent>
@@ -60,6 +61,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   max-width: 720px;
   margin: 0 auto;
   gap: 10px;

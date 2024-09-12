@@ -14,6 +14,7 @@ const Information = () => {
 
       <InfoText>2024년 11월 16일 토요일 오후 05:20</InfoText>
       <InfoText>그레이스파티</InfoText>
+      <h2>- 지도 제작중 -</h2>
 
       {/* <CalendarContainer>
         <DatePicker
@@ -42,8 +43,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 30px;
-
   max-width: 600px;
   margin: 20px auto;
 `;
