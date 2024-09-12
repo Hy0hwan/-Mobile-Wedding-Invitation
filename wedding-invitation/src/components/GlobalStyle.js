@@ -1,11 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
-import BMJUA from '../assets/BMJUA_ttf.ttf';
+import SuseongBatang from '../assets/SuseongBatang.woff';
 import Blacksword from '../assets/Blacksword.otf';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
-    font-family: 'BMJUA';
-    src: url(${BMJUA}) format('truetype');
+    font-family: 'SuseongBatang';
+    src: url(${SuseongBatang}) format('woff');
     font-weight: normal;
     font-style: normal;
   }
@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'BMJUA', sans-serif;
+    font-family: 'SuseongBatang', serif;
   }
 
   /* Blacksword 폰트는 특정 요소에서만 적용하도록 */
