@@ -53,6 +53,7 @@ const SaveTheDate = () => {
       ) : (
         <>
           <Header>결혼식 까지</Header>
+          <HeadEn>D-Day</HeadEn>
           <Countdown>
             <TimeUnit>
               <TimeNumber>{timeLeft.days}</TimeNumber>
@@ -95,15 +96,22 @@ const Header = styled.p`
   font-size: 24px;
   color: #333;
   position: relative;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
   font-weight: bold;
+`;
+
+const HeadEn = styled.p`
+  font-family: 'Blacksword', cursive;
+  font-size: 14px;
+  margin-bottom: 20px;
+  margin-top: -15px;
+  color: #bbb;
 `;
 
 const Comment = styled.p`
   font-size: 1.2rem;
   color: #333; /* 텍스트 색상을 기본 회색으로 설정 */
-  margin-top: 20px; /* 위쪽 여백 추가 */
+  margin-top: 40px; /* 위쪽 여백 추가 */
+  font-size: 16px;
 `;
 
 const Countdown = styled.div`

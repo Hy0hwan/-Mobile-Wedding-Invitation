@@ -98,11 +98,6 @@ const StyledLine = styled.div`
   background-color: #ddd;
 `;
 
-const Highlighted = styled.span`
-  color: #e74c3c;
-  font-weight: bold;
-`;
-
 const HiddenLetter = styled.span`
   visibility: hidden;
 `;

@@ -10,6 +10,8 @@ const Information = () => {
   return (
     <Container>
       <Header>예식 안내</Header>
+      <HeadEn>Information</HeadEn>
+
       <InfoText>2024년 11월 16일 토요일 오후 05:20</InfoText>
       <InfoText>그레이스파티</InfoText>
 
@@ -54,6 +56,14 @@ const Header = styled.h2`
   margin-bottom: 20px;
   padding-bottom: 10px;
   font-weight: 600;
+`;
+
+const HeadEn = styled.p`
+  font-family: 'Blacksword', cursive;
+  font-size: 14px;
+  margin-bottom: 20px;
+  margin-top: -15px;
+  color: #bbb;
 `;
 
 const InfoText = styled.p`

@@ -29,6 +29,8 @@ const ImgBox = () => {
   return (
     <GalleryContainer>
       <Header>웨딩 갤러리</Header>
+      <HeadEn>Gallery</HeadEn>
+
       <GridContainer>
         {images.map((image, index) => (
           <Thumbnail
@@ -68,6 +70,13 @@ const Header = styled.p`
   font-weight: bold;
 `;
 
+const HeadEn = styled.p`
+  font-family: 'Blacksword', cursive;
+  font-size: 14px;
+  margin-bottom: 20px;
+  margin-top: -15px;
+  color: #bbb;
+`;
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
