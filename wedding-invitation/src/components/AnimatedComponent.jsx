@@ -15,11 +15,12 @@ const fadeIn = keyframes`
 `;
 
 const AnimatedSection = styled.div`
+  display: flex;
   opacity: 0;
   ${({ inView }) =>
     inView &&
     css`
-      animation: ${fadeIn} 1s ease-out forwards;
+      animation: ${fadeIn} 0.8s forwards;
     `}
 `;
 

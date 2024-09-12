@@ -73,7 +73,7 @@ const StyledInfoRow = styled.div`
 `;
 
 const StyledText = styled.p`
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.6;
   margin: 10px 0;
   text-align: center;
@@ -83,7 +83,7 @@ const StyledText = styled.p`
 
 // 왼쪽 정렬할 텍스트 스타일
 const StyledLeftText = styled.p`
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.6;
   margin: 3px;
   text-align: left;
