@@ -145,6 +145,7 @@ const Toast = styled.div`
   color: white;
   padding: 12px 24px;
   border-radius: 25px;
+  font-family: 'BMJUA', sans-serif;
   font-size: 13px;
   transition: bottom 0.3s ease-in-out;
   opacity: ${({ visible }) => (visible ? 1 : 0)}; /* 나타날 때 투명도 */
