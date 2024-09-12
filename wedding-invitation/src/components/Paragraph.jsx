@@ -10,11 +10,10 @@ const Paragraph = () => {
       <StyledTextHead>결혼합니다 !</StyledTextHead>
 
       <StyledInfoRow>
-        <StyledText>info</StyledText>
+        <StyledInfoText>info</StyledInfoText>
         <StyledLine />
       </StyledInfoRow>
 
-      {/* 왼쪽 정렬할 텍스트 */}
       <StyledLeftText>2024년 11월 16일, 토요일 오후 5시 20분</StyledLeftText>
       <StyledLeftText>그레이스파티 (신림) 7층</StyledLeftText>
 
@@ -38,7 +37,6 @@ const Paragraph = () => {
 
 export default Paragraph;
 
-// 전체 컨테이너 스타일
 const StyledContainer = styled.div`
   display: flex;
   width: 100%;
@@ -57,24 +55,24 @@ const StyledTextHead = styled.p`
   font-size: 30px;
   line-height: 1.6;
   margin: 0;
-  text-align: left; /* 왼쪽 정렬 */
+  text-align: left;
   color: #333;
-  width: 100%; /* 부모 컨테이너 너비에 맞추기 */
-  padding-left: 20px; /* 왼쪽에 여백 추가 (선택 사항) */
+  width: 100%;
+  padding-left: 20px;
 `;
 
 const StyledInfoRow = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  padding-left: 20px; /* info 줄이 왼쪽 여백에 맞춰지도록 조정 */
+  padding-left: 20px;
 `;
 
 const StyledText = styled.p`
   font-size: 20px;
   line-height: 1.6;
   margin: 10px 0;
-  text-align: center; /* 기본 텍스트는 가운데 정렬 */
+  text-align: center;
   color: #333;
   margin-right: 10px;
 `;
@@ -84,9 +82,9 @@ const StyledLeftText = styled.p`
   font-size: 20px;
   line-height: 1.6;
   margin: 10px 0;
-  text-align: left; /* 왼쪽 정렬 */
+  text-align: left;
   width: 100%;
-  padding-left: 20px; /* 왼쪽 여백 추가 */
+  padding-left: 20px;
   color: #333;
 `;
 
@@ -103,4 +101,12 @@ const Highlighted = styled.span`
 
 const HiddenLetter = styled.span`
   visibility: hidden;
+`;
+
+// Info 텍스트에 Blacksword 폰트 적용
+const StyledInfoText = styled.p`
+  font-family: 'Blacksword', cursive; /* Blacksword 폰트 적용 */
+  font-size: 24px; /* 폰트 크기 조정 */
+  color: #333;
+  margin-right: 10px;
 `;
