@@ -7,7 +7,9 @@ const Paragraph = () => {
     <StyledContainer>
       <StyledTextHead>이승원</StyledTextHead>
       <StyledTextHead>임소정</StyledTextHead>
-      <StyledTextHead>결혼합니다 !</StyledTextHead>
+      <StyledTextHead>
+        결혼합니다<ItalicExclamationMark>!</ItalicExclamationMark>
+      </StyledTextHead>
 
       <StyledInfoRow>
         <StyledInfoText>info</StyledInfoText>
@@ -37,6 +39,7 @@ const Paragraph = () => {
 
 export default Paragraph;
 
+// 전체 컨테이너 스타일
 const StyledContainer = styled.div`
   display: flex;
   width: 100%;
@@ -49,6 +52,7 @@ const StyledContainer = styled.div`
 const StyledImage = styled.img`
   width: 100%;
   height: 350px;
+  margin-top: 20px;
 `;
 
 const StyledTextHead = styled.p`
@@ -79,9 +83,9 @@ const StyledText = styled.p`
 
 // 왼쪽 정렬할 텍스트 스타일
 const StyledLeftText = styled.p`
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.6;
-  margin: 10px 0;
+  margin: 3px;
   text-align: left;
   width: 100%;
   padding-left: 20px;
@@ -91,7 +95,7 @@ const StyledLeftText = styled.p`
 const StyledLine = styled.div`
   flex-grow: 0.9;
   height: 1px;
-  background-color: #333;
+  background-color: #ddd;
 `;
 
 const Highlighted = styled.span`
@@ -107,6 +111,11 @@ const HiddenLetter = styled.span`
 const StyledInfoText = styled.p`
   font-family: 'Blacksword', cursive; /* Blacksword 폰트 적용 */
   font-size: 24px; /* 폰트 크기 조정 */
-  color: #333;
+  color: #ffb6c1;
   margin-right: 10px;
+`;
+
+// 느낌표 기울기 적용
+const ItalicExclamationMark = styled.span`
+  font-style: italic;
 `;

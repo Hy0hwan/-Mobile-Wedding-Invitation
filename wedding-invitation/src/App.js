@@ -11,6 +11,7 @@ import GlobalStyle from './components/GlobalStyle';
 import MusicPlayer from './components/MusicPlayer';
 import Footer from './components/Footer';
 import FireworksEffect from './components/FireworksEffect';
+import Divider from './components/Divider';
 
 function App() {
   return (
@@ -31,7 +32,6 @@ function App() {
           <KakaoMap />
           <Divider />
           <AccountDetails />
-          <Divider />
           <MusicPlayer />
         </SubContainer>
         <Footer />
@@ -72,11 +72,4 @@ const SubContainer = styled.div`
     height: auto;
     padding: 10px;
   }
-`;
-
-const Divider = styled.div`
-  width: 80%;
-  height: 1px;
-  background-color: #ddd; /* 구분선 색상 */
-  margin: 20px 0; /* 구분선 위아래 여백 */
 `;
