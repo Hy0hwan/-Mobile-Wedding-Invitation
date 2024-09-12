@@ -21,11 +21,17 @@ function App() {
         <FireworksEffect />
         <SubContainer>
           <Paragraph />
+          <Divider />
           <SaveTheDate />
+          <Divider />
           <Information />
+          <Divider />
           <ImgBox />
+          <Divider />
           <KakaoMap />
+          <Divider />
           <AccountDetails />
+          <Divider />
           <MusicPlayer />
         </SubContainer>
         <Footer />
@@ -66,4 +72,11 @@ const SubContainer = styled.div`
     height: auto;
     padding: 10px;
   }
+`;
+
+const Divider = styled.div`
+  width: 80%;
+  height: 1px;
+  background-color: #ddd; /* 구분선 색상 */
+  margin: 20px 0; /* 구분선 위아래 여백 */
 `;
