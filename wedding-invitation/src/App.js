@@ -36,8 +36,7 @@ function App() {
           </AnimatedComponent>
           <Divider />
           <AnimatedComponent>
-            {/* <ImgBox /> */}
-            <p>수 리 중</p>
+            <ImgBox />
           </AnimatedComponent>
           <Divider />
           <AnimatedComponent>

@@ -42,17 +42,18 @@ export default Paragraph;
 // 전체 컨테이너 스타일
 const StyledContainer = styled.div`
   display: flex;
-  width: 100%;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
-  margin-top: 50px;
+  width: 100%; /* 전체 너비를 유지 */
+  margin-top: 70px;
 `;
 
 const StyledImage = styled.img`
   width: 100%;
   height: 350px;
   margin-top: 20px;
+  margin-bottom: 30px;
 `;
 
 const StyledTextHead = styled.p`
