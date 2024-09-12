@@ -12,6 +12,7 @@ import MusicPlayer from './components/MusicPlayer';
 import Footer from './components/Footer';
 import FireworksEffect from './components/FireworksEffect';
 import Divider from './components/Divider';
+import AnimatedComponent from './components/AnimatedComponent';
 
 function App() {
   return (
@@ -22,17 +23,29 @@ function App() {
         <MainImage />
         <FireworksEffect />
         <SubContainer>
-          <Paragraph />
+          <AnimatedComponent>
+            <Paragraph />
+          </AnimatedComponent>
           <Divider />
-          <SaveTheDate />
+          <AnimatedComponent>
+            <SaveTheDate />
+          </AnimatedComponent>
           <Divider />
-          <Information />
+          <AnimatedComponent>
+            <Information />
+          </AnimatedComponent>
           <Divider />
-          <ImgBox />
+          <AnimatedComponent>
+            <ImgBox />
+          </AnimatedComponent>
           <Divider />
-          <KakaoMap />
+          <AnimatedComponent>
+            <KakaoMap />
+          </AnimatedComponent>
           <Divider />
-          <AccountDetails />
+          <AnimatedComponent>
+            <AccountDetails />
+          </AnimatedComponent>
         </SubContainer>
         <Footer />
       </Container>
