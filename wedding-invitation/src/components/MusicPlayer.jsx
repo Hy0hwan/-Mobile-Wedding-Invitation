@@ -18,11 +18,7 @@ const MusicPlayer = () => {
 
   return (
     <div>
-      <Audio
-        ref={audioRef}
-        src="/I_Will.mp3" // `public` 폴더에 있는 오디오 파일
-        preload="auto"
-      />
+      <Audio ref={audioRef} src="/I_Will.mp3" preload="auto" />
       <PlayPauseButton onClick={togglePlayPause}>
         <img src={isPlaying ? musicOnIcon : musicOffIcon} alt="Play/Pause" />
       </PlayPauseButton>

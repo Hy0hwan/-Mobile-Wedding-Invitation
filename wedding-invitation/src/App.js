@@ -18,6 +18,7 @@ function App() {
     <>
       <GlobalStyle />
       <Container>
+        <MusicPlayer />
         <MainImage />
         <FireworksEffect />
         <SubContainer>
@@ -32,7 +33,6 @@ function App() {
           <KakaoMap />
           <Divider />
           <AccountDetails />
-          <MusicPlayer />
         </SubContainer>
         <Footer />
       </Container>
