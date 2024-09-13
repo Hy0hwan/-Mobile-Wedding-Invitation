@@ -37,7 +37,6 @@ function App() {
           <Divider />
           <AnimatedComponent>
             <ImgBox />
-            <h2>- 점 검 중 -</h2>
           </AnimatedComponent>
           <Divider />
           <AnimatedComponent>
