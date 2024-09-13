@@ -14,6 +14,8 @@
     "react-datepicker": "^7.3.0",
     "react-dom": "^18.3.1",
     "react-intersection-observer": "^9.13.1",
+    "react-lightbox-component": "^1.2.1",
+    "react-modal-image": "^2.6.0",
     "react-scripts": "5.0.1",
     "styled-components": "^6.1.13",
     "web-vitals": "^2.1.4"
