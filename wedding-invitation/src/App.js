@@ -35,9 +35,7 @@ function App() {
             <Information />
           </AnimatedComponent>
           <Divider />
-          <AnimatedComponent>
-            <ImgBox />
-          </AnimatedComponent>
+          <AnimatedComponent>{/* <ImgBox /> */}</AnimatedComponent>
           <Divider />
           <AnimatedComponent>
             <KakaoMap />
@@ -64,7 +62,7 @@ const Container = styled.div`
   max-width: 720px;
   margin: 0 auto;
   gap: 10px;
-  overflow-x: hidden;
+  overflow: hidden; /* 모든 스크롤을 감춥니다 */
 
   @media (max-width: 768px) {
     /* height: auto; */
@@ -80,7 +78,7 @@ const SubContainer = styled.div`
   margin: 0 auto;
   padding: 10px;
   gap: 10px;
-  overflow-x: hidden;
+  overflow: hidden; /* 모든 스크롤을 감춥니다 */
 
   @media (max-width: 768px) {
     height: auto;

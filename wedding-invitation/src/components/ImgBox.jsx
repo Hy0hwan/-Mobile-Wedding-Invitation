@@ -129,12 +129,12 @@ const Lightbox = styled.div`
   }
 
   img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 100%;
+    max-height: 100%;
     border-radius: 10px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
     object-fit: contain; /* 이미지 비율 유지 */
-    animation: zoomIn 0.3s ease;
+    /* animation: zoomIn 0.3s ease; */
 
     @keyframes zoomIn {
       from {
