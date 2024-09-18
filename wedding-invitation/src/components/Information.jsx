@@ -1,11 +1,22 @@
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-// import DatePicker from 'react-datepicker';
+import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { ko } from 'date-fns/locale'; // Import Korean locale
 
 const Information = () => {
-  // const fixedDate = new Date(2024, 10, 16); // 2024년 11월 16일
-  // const [startDate, setStartDate] = useState(fixedDate);
+  const fixedDate = new Date(2024, 10, 16, 17, 20); // 2024년 11월 16일 오후 5:20
+  const [startDate, setStartDate] = useState(fixedDate);
+
+  // 날짜에 클래스를 추가하여 스타일을 조정
+  const dayClassName = (date) => {
+    const day = date.getDate();
+    const month = date.getMonth() + 1; // 월은 0부터 시작하므로 +1
+    if (month === 10 && day >= 27 && day <= 31) {
+      return 'hide-day';
+    }
+    return '';
+  };
 
   return (
     <Container>
@@ -14,9 +25,8 @@ const Information = () => {
 
       <InfoText>2024년 11월 16일 토요일 오후 05:20</InfoText>
       <InfoText>그레이스파티</InfoText>
-      <h2>- 지도 제작중 -</h2>
 
-      {/* <CalendarContainer>
+      <CalendarContainer>
         <DatePicker
           selected={startDate}
           onChange={(date) => setStartDate(date)}
@@ -26,12 +36,10 @@ const Information = () => {
           highlightDates={[fixedDate]} // 강조할 날짜 설정
           showPopperArrow={false} // 화살표 숨기기
           disabledKeyboardNavigation // 키보드 내비게이션 비활성화
-          showMonthDropdown
-          showYearDropdown
-          dropdownMode="select"
-          calendarClassName="custom-calendar"
+          dayClassName={dayClassName} // 날짜에 클래스 추가
+          locale={ko} // 언어 설정
         />
-      </CalendarContainer> */}
+      </CalendarContainer>
     </Container>
   );
 };
@@ -72,52 +80,61 @@ const InfoText = styled.p`
   font-weight: 300;
 `;
 
-// const CalendarContainer = styled.div`
-//   margin-top: 20px;
+const CalendarContainer = styled.div`
+  margin-top: 20px;
 
-//   .react-datepicker {
-//     border: none;
-//     border-radius: 12px;
-//     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-//     font-family: 'Arial', sans-serif;
-//     background: #fff;
-//   }
+  .react-datepicker {
+    border: none;
+    border-radius: 12px;
+    background: #fff;
+    font-family: 'BMJUA', sans-serif;
+    pointer-events: none; /* 클릭 이벤트를 차단합니다 */
+  }
 
-//   .react-datepicker__header {
-//     background-color: #ff4500;
-//     border: none;
-//     color: white;
-//     border-radius: 12px 12px 0 0;
-//     padding: 10px;
-//     font-weight: 600;
-//   }
+  .react-datepicker__header {
+    background-color: transparent;
+    border-bottom: 1px solid #e0e0e0;
+    color: #333;
+    padding: 10px;
+    font-weight: 600;
+  }
 
-//   .react-datepicker__current-month {
-//     font-size: 20px;
-//   }
+  .react-datepicker__current-month {
+    font-size: 18px;
+    color: #333;
+  }
 
-//   .react-datepicker__day {
-//     border-radius: 50%;
-//     color: #333;
-//   }
+  .react-datepicker__day {
+    border-radius: 50%;
+    color: #333;
+    font-size: 16px;
+    margin: 2px;
+    transition: background-color 0.3s ease;
+  }
 
-//   .react-datepicker__day--highlighted {
-//     background-color: #ff4500;
-//     color: white;
-//   }
+  /* 숨기기 클래스 */
+  .hide-day {
+    visibility: hidden;
+  }
 
-//   .react-datepicker__day--selected {
-//     background-color: #ff4500;
-//     color: white;
-//   }
+  .react-datepicker__day--highlighted,
+  .react-datepicker__day--selected,
+  .react-datepicker__day--keyboard-selected {
+    background-color: #ffb6c1;
+    color: white;
+  }
 
-//   .react-datepicker__day--keyboard-selected {
-//     background-color: #ff4500;
-//     color: white;
-//   }
+  .react-datepicker__day:hover {
+    background-color: #ffb6c1;
+    color: white;
+  }
 
-//   .react-datepicker__day--disabled {
-//     background-color: #f0f0f0;
-//     color: #bdbdbd;
-//   }
-// `;
+  .react-datepicker__day--disabled {
+    color: #bdbdbd;
+  }
+
+  .react-datepicker__time-list-item--selected {
+    background-color: #ffb6c1 !important;
+    color: white !important;
+  }
+`;
