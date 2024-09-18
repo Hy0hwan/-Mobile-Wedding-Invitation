@@ -1,13 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import LightGallery from 'lightgallery/react';
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-thumbnail.css';
-import 'lightgallery/css/lg-fullscreen.css';
-import 'lightgallery/css/lg-zoom.css';
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgFullscreen from 'lightgallery/plugins/fullscreen';
-import lgZoom from 'lightgallery/plugins/zoom';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css'; // 기본 스타일 가져오기
 
 import img1 from '../assets/imgs/1.jpeg';
 import img2 from '../assets/imgs/2.jpeg';
@@ -20,27 +14,49 @@ import img9 from '../assets/imgs/9.jpeg';
 import img10 from '../assets/imgs/10.jpeg';
 
 const ImgBox = () => {
-  const galleryRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const images = [img1, img5, img7, img2, img6, img8, img9, img10, img4];
+
+  const openLightbox = (index) => {
+    setCurrentImageIndex(index);
+    setIsOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setIsOpen(false);
+  };
 
   return (
     <GalleryContainer>
       <Header>웨딩 갤러리</Header>
       <HeadEn>Gallery</HeadEn>
       <ImgContainer>
-        <LightGallery
-          ref={galleryRef}
-          plugins={[lgThumbnail, lgFullscreen, lgZoom]}
-          speed={500}
-        >
-          {images.map((image, index) => (
-            <Thumbnail key={index} data-src={image} data-thumb={image}>
-              <img src={image} alt={`우리 사진 ${index + 1}`} />
-            </Thumbnail>
-          ))}
-        </LightGallery>
+        {images.map((image, index) => (
+          <Thumbnail key={index} onClick={() => openLightbox(index)}>
+            <img src={image} alt={`우리 사진 ${index + 1}`} />
+          </Thumbnail>
+        ))}
       </ImgContainer>
+      {isOpen && (
+        <Lightbox
+          mainSrc={images[currentImageIndex]}
+          nextSrc={images[(currentImageIndex + 1) % images.length]}
+          prevSrc={
+            images[(currentImageIndex + images.length - 1) % images.length]
+          }
+          onCloseRequest={closeLightbox}
+          onMovePrevRequest={() =>
+            setCurrentImageIndex(
+              (currentImageIndex + images.length - 1) % images.length
+            )
+          }
+          onMoveNextRequest={() =>
+            setCurrentImageIndex((currentImageIndex + 1) % images.length)
+          }
+        />
+      )}
     </GalleryContainer>
   );
 };
@@ -86,7 +102,7 @@ const ImgContainer = styled.div`
   }
 `;
 
-const Thumbnail = styled.a`
+const Thumbnail = styled.div`
   display: block;
   overflow: hidden;
   cursor: pointer;
