@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import Gallery from 'react-image-gallery';
 import styled from 'styled-components';
-import 'react-image-gallery/styles/css/image-gallery.css';
+
 import img1 from '../assets/imgs/1.jpeg';
 import img2 from '../assets/imgs/2.jpeg';
 import img4 from '../assets/imgs/4.png';
@@ -13,23 +12,38 @@ import img9 from '../assets/imgs/9.jpeg';
 import img10 from '../assets/imgs/10.jpeg';
 
 const ImgBox = () => {
-  const images = [
-    { original: img1, thumbnail: img1 },
-    { original: img5, thumbnail: img5 },
-    { original: img7, thumbnail: img7 },
-    { original: img2, thumbnail: img2 },
-    { original: img6, thumbnail: img6 },
-    { original: img8, thumbnail: img8 },
-    { original: img9, thumbnail: img9 },
-    { original: img10, thumbnail: img10 },
-    { original: img4, thumbnail: img4 },
-  ];
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
+
+  const images = [img1, img5, img7, img2, img6, img8, img9, img10, img4];
+
+  const openModal = (src) => {
+    setCurrentImage(src);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <GalleryContainer>
       <Header>웨딩 갤러리</Header>
       <HeadEn>Gallery</HeadEn>
-      <Gallery items={images} />
+      <GalleryGrid>
+        {images.map((src, index) => (
+          <GalleryItem key={index} onClick={() => openModal(src)}>
+            <img src={src} alt={`Gallery item ${index + 1}`} />
+          </GalleryItem>
+        ))}
+      </GalleryGrid>
+      {isModalOpen && (
+        <ModalOverlay onClick={closeModal}>
+          <ModalContent onClick={(e) => e.stopPropagation()}>
+            <img src={currentImage} alt="Enlarged view" />
+          </ModalContent>
+        </ModalOverlay>
+      )}
     </GalleryContainer>
   );
 };
@@ -59,4 +73,69 @@ const HeadEn = styled.p`
   margin-bottom: 20px;
   margin-top: -15px;
   color: #bbb;
+`;
+
+const GalleryGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(100px, 1fr)
+  ); /* Adjust grid size for mobile */
+  gap: 10px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+`;
+
+const GalleryItem = styled.div`
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  aspect-ratio: 1 / 1; /* Maintain a square aspect ratio */
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain the aspect ratio while covering the container */
+    display: block;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s;
+  }
+`;
+
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
+
+const ModalContent = styled.div`
+  position: relative;
+  max-width: 90%;
+  max-height: 80%;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 `;
