@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css'; // 기본 스타일 가져오기
-
+import 'react-image-lightbox/style.css';
 import img1 from '../assets/imgs/1.jpeg';
 import img2 from '../assets/imgs/2.jpeg';
 import img4 from '../assets/imgs/4.png';
