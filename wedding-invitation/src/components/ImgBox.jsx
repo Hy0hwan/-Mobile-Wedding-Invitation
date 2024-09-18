@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import Gallery from 'react-image-gallery';
 import styled from 'styled-components';
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
+import 'react-image-gallery/styles/css/image-gallery.css';
 import img1 from '../assets/imgs/1.jpeg';
 import img2 from '../assets/imgs/2.jpeg';
 import img4 from '../assets/imgs/4.png';
@@ -13,49 +13,23 @@ import img9 from '../assets/imgs/9.jpeg';
 import img10 from '../assets/imgs/10.jpeg';
 
 const ImgBox = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const images = [img1, img5, img7, img2, img6, img8, img9, img10, img4];
-
-  const openLightbox = (index) => {
-    setCurrentImageIndex(index);
-    setIsOpen(true);
-  };
-
-  const closeLightbox = () => {
-    setIsOpen(false);
-  };
+  const images = [
+    { original: img1, thumbnail: img1 },
+    { original: img5, thumbnail: img5 },
+    { original: img7, thumbnail: img7 },
+    { original: img2, thumbnail: img2 },
+    { original: img6, thumbnail: img6 },
+    { original: img8, thumbnail: img8 },
+    { original: img9, thumbnail: img9 },
+    { original: img10, thumbnail: img10 },
+    { original: img4, thumbnail: img4 },
+  ];
 
   return (
     <GalleryContainer>
       <Header>웨딩 갤러리</Header>
       <HeadEn>Gallery</HeadEn>
-      <ImgContainer>
-        {images.map((image, index) => (
-          <Thumbnail key={index} onClick={() => openLightbox(index)}>
-            <img src={image} alt={`우리 사진 ${index + 1}`} />
-          </Thumbnail>
-        ))}
-      </ImgContainer>
-      {isOpen && (
-        <Lightbox
-          mainSrc={images[currentImageIndex]}
-          nextSrc={images[(currentImageIndex + 1) % images.length]}
-          prevSrc={
-            images[(currentImageIndex + images.length - 1) % images.length]
-          }
-          onCloseRequest={closeLightbox}
-          onMovePrevRequest={() =>
-            setCurrentImageIndex(
-              (currentImageIndex + images.length - 1) % images.length
-            )
-          }
-          onMoveNextRequest={() =>
-            setCurrentImageIndex((currentImageIndex + 1) % images.length)
-          }
-        />
-      )}
+      <Gallery items={images} />
     </GalleryContainer>
   );
 };
@@ -85,43 +59,4 @@ const HeadEn = styled.p`
   margin-bottom: 20px;
   margin-top: -15px;
   color: #bbb;
-`;
-
-const ImgContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px; /* 썸네일 사이의 간격 */
-
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(3, 1fr); /* 중간 크기 화면에서 3개씩 */
-  }
-
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(3, 1fr); /* 작은 화면에서 2개씩 */
-  }
-`;
-
-const Thumbnail = styled.div`
-  display: block;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  width: 100%;
-  padding-top: 100%; /* Maintains square aspect ratio */
-  position: relative;
-
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure image covers thumbnail area */
-  }
-
-  &:hover {
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05);
-  }
 `;
