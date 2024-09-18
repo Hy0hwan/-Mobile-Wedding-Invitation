@@ -82,7 +82,7 @@ const ImgContainer = styled.div`
   }
 
   @media (max-width: 480px) {
-    grid-template-columns: repeat(2, 1fr); /* 작은 화면에서 2개씩 */
+    grid-template-columns: repeat(3, 1fr); /* 작은 화면에서 2개씩 */
   }
 `;
 
