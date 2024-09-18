@@ -96,7 +96,7 @@ const CalendarContainer = styled.div`
     border-bottom: 1px solid #e0e0e0;
     color: #333;
     padding: 10px;
-    font-weight: 600;
+    /* font-weight: 600; */
   }
 
   .react-datepicker__current-month {

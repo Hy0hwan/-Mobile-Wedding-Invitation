@@ -1,5 +1,14 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
+import LightGallery from 'lightgallery/react';
+import 'lightgallery/css/lightgallery.css';
+import 'lightgallery/css/lg-thumbnail.css';
+import 'lightgallery/css/lg-fullscreen.css';
+import 'lightgallery/css/lg-zoom.css';
+import lgThumbnail from 'lightgallery/plugins/thumbnail';
+import lgFullscreen from 'lightgallery/plugins/fullscreen';
+import lgZoom from 'lightgallery/plugins/zoom';
+
 import img1 from '../assets/imgs/1.jpeg';
 import img2 from '../assets/imgs/2.jpeg';
 import img4 from '../assets/imgs/4.png';
@@ -11,38 +20,27 @@ import img9 from '../assets/imgs/9.jpeg';
 import img10 from '../assets/imgs/10.jpeg';
 
 const ImgBox = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const galleryRef = useRef(null);
 
   const images = [img1, img5, img7, img2, img6, img8, img9, img10, img4];
-
-  const openImage = (image) => {
-    setSelectedImage(image);
-  };
-
-  const closeImage = () => {
-    setSelectedImage(null);
-  };
 
   return (
     <GalleryContainer>
       <Header>웨딩 갤러리</Header>
       <HeadEn>Gallery</HeadEn>
-
-      <GridContainer>
-        {images.map((image, index) => (
-          <Thumbnail
-            key={index}
-            image={image}
-            onClick={() => openImage(image)}
-          />
-        ))}
-      </GridContainer>
-
-      {selectedImage && (
-        <Lightbox onClick={closeImage}>
-          <img src={selectedImage} alt="확대 이미지" />
-        </Lightbox>
-      )}
+      <ImgContainer>
+        <LightGallery
+          ref={galleryRef}
+          plugins={[lgThumbnail, lgFullscreen, lgZoom]}
+          speed={500}
+        >
+          {images.map((image, index) => (
+            <Thumbnail key={index} data-src={image} data-thumb={image}>
+              <img src={image} alt={`우리 사진 ${index + 1}`} />
+            </Thumbnail>
+          ))}
+        </LightGallery>
+      </ImgContainer>
     </GalleryContainer>
   );
 };
@@ -74,75 +72,41 @@ const HeadEn = styled.p`
   color: #bbb;
 `;
 
-const GridContainer = styled.div`
+const ImgContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap: 15px; /* 썸네일 사이의 간격 */
 
   @media (max-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 중간 크기 화면에서 3개씩 */
   }
 
   @media (max-width: 480px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 작은 화면에서 2개씩 */
   }
 `;
 
-const Thumbnail = styled.div`
+const Thumbnail = styled.a`
+  display: block;
   overflow: hidden;
   cursor: pointer;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   width: 100%;
-  padding-top: 100%; /* 비율 유지 (정사각형) */
+  padding-top: 100%; /* Maintains square aspect ratio */
   position: relative;
 
-  /* 이미지 배경으로 설정 */
-  background-image: url(${(props) => props.image});
-  background-size: cover;
-  background-position: center;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure image covers thumbnail area */
+  }
 
   &:hover {
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
-  }
-`;
-
-const Lightbox = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  opacity: 0;
-  animation: fadeIn 0.4s forwards;
-
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
-  }
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 10px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
-    object-fit: contain; /* 이미지 비율 유지 */
-    /* animation: zoomIn 0.3s ease; */
-
-    @keyframes zoomIn {
-      from {
-        transform: scale(0.8);
-      }
-      to {
-        transform: scale(1);
-      }
-    }
   }
 `;
