@@ -4,7 +4,6 @@ import MainImage from './components/MainImage';
 import Paragraph from './components/Paragraph';
 import SaveTheDate from './components/SaveTheDate';
 import Information from './components/Information';
-import ImgBox from './components/ImgBox';
 import KakaoMap from './components/KakaoMap';
 import AccountDetails from './components/AccountDetails';
 import GlobalStyle from './components/GlobalStyle';

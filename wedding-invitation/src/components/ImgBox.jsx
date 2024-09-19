@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 import img1 from '../assets/imgs/1.jpeg';
 import img2 from '../assets/imgs/2.jpeg';
@@ -148,14 +146,4 @@ const ModalContent = styled.div`
   background: white;
   border-radius: 8px;
   overflow: hidden;
-
-  .slick-slide img {
-    width: 100%;
-    height: auto;
-    object-fit: contain; /* Adjust image fit within the slider */
-  }
-
-  .slick-dots {
-    bottom: 10px;
-  }
 `;
