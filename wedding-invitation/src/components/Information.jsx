@@ -101,7 +101,7 @@ const CalendarContainer = styled.div`
   border-radius: 12px;
   padding: 20px;
   background-color: #fff;
-  pointer-events: no;
+  pointer-events: none;
 `;
 
 const CalendarHeader = styled.h3`
