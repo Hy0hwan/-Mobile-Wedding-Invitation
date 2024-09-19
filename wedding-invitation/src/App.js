@@ -37,7 +37,6 @@ function App() {
           </AnimatedComponent>
           <Divider />
           <AnimatedComponent>
-            {/* <ImgBox /> */}
             <WeddingImg />
           </AnimatedComponent>
           <Divider />
