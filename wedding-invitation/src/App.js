@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import FireworksEffect from './components/FireworksEffect';
 import Divider from './components/Divider';
 import AnimatedComponent from './components/AnimatedComponent';
+import WeddingImg from './components/WeddingImg';
 
 function App() {
   return (
@@ -36,7 +37,8 @@ function App() {
           </AnimatedComponent>
           <Divider />
           <AnimatedComponent>
-            <ImgBox />
+            {/* <ImgBox /> */}
+            <WeddingImg />
           </AnimatedComponent>
           <Divider />
           <AnimatedComponent>
