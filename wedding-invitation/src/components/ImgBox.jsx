@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { LightgalleryProvider, LightgalleryItem } from 'react-lightgallery';
+import 'lightgallery/css/lightgallery.css';
+import 'lightgallery/css/lg-thumbnail.css';
+import 'lightgallery/css/lg-fullscreen.css';
+import 'lightgallery/css/lg-zoom.css';
 
 import img1 from '../assets/imgs/1.jpeg';
 import img2 from '../assets/imgs/2.jpeg';
@@ -12,38 +17,30 @@ import img9 from '../assets/imgs/9.jpeg';
 import img10 from '../assets/imgs/10.jpeg';
 
 const ImgBox = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState(null);
-
   const images = [img1, img5, img7, img2, img6, img8, img9, img10, img4];
-
-  const openModal = (src) => {
-    setCurrentImage(src);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
 
   return (
     <GalleryContainer>
       <Header>웨딩 갤러리</Header>
       <HeadEn>Gallery</HeadEn>
-      <GalleryGrid>
-        {images.map((src, index) => (
-          <GalleryItem key={index} onClick={() => openModal(src)}>
-            <img src={src} alt={`Gallery item ${index + 1}`} />
-          </GalleryItem>
-        ))}
-      </GalleryGrid>
-      {isModalOpen && (
-        <ModalOverlay onClick={closeModal}>
-          <ModalContent onClick={(e) => e.stopPropagation()}>
-            <img src={currentImage} alt="Enlarged view" />
-          </ModalContent>
-        </ModalOverlay>
-      )}
+      <LightgalleryProvider
+        speed={500}
+        plugins={['lg-thumbnail', 'lg-fullscreen', 'lg-zoom']}
+      >
+        <GalleryGrid>
+          {images.map((src, index) => (
+            <GalleryItem key={index}>
+              <LightgalleryItem
+                src={src}
+                thumb={src} // 썸네일 이미지 사용
+                data-sub-html={`<h4>Image ${index + 1}</h4>`}
+              >
+                <img src={src} alt={`Gallery item ${index + 1}`} />
+              </LightgalleryItem>
+            </GalleryItem>
+          ))}
+        </GalleryGrid>
+      </LightgalleryProvider>
     </GalleryContainer>
   );
 };
@@ -110,32 +107,5 @@ const GalleryItem = styled.div`
   &:hover img {
     transform: scale(1.05);
     transition: transform 0.3s;
-  }
-`;
-
-const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-`;
-
-const ModalContent = styled.div`
-  position: relative;
-  max-width: 90%;
-  max-height: 80%;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-
-  img {
-    width: 100%;
-    height: auto;
   }
 `;
