@@ -1,21 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { ko } from 'date-fns/locale'; // Import Korean locale
 
 const Information = () => {
   const fixedDate = new Date(2024, 10, 16, 17, 20); // 2024년 11월 16일 오후 5:20
-  const [startDate, setStartDate] = useState(fixedDate);
+  const year = fixedDate.getFullYear();
+  const month = fixedDate.getMonth(); // 11월 (JavaScript에서 월은 0부터 시작)
 
-  // 날짜에 클래스를 추가하여 스타일을 조정
-  const dayClassName = (date) => {
-    const day = date.getDate();
-    const month = date.getMonth() + 1; // 월은 0부터 시작하므로 +1
-    if (month === 10 && day >= 27 && day <= 31) {
-      return 'hide-day';
+  // 해당 월의 첫 번째 날과 마지막 날을 계산
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  // 날짜 배열을 만들기 위한 함수
+  const generateCalendarDays = () => {
+    const days = [];
+    for (let i = 0; i < firstDay; i++) {
+      days.push(<EmptyDay key={`empty-${i}`} />);
     }
-    return '';
+    for (let i = 1; i <= daysInMonth; i++) {
+      const dayIndex = (firstDay + i - 1) % 7; // 요일 인덱스 계산
+      days.push(
+        <Day key={i} highlighted={i === 16} isSunday={dayIndex === 0}>
+          {i}
+        </Day>
+      );
+    }
+    return days;
   };
 
   return (
@@ -27,18 +36,17 @@ const Information = () => {
       <InfoText>그레이스파티</InfoText>
 
       <CalendarContainer>
-        <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          inline
-          minDate={fixedDate}
-          maxDate={fixedDate}
-          highlightDates={[fixedDate]} // 강조할 날짜 설정
-          showPopperArrow={false} // 화살표 숨기기
-          disabledKeyboardNavigation // 키보드 내비게이션 비활성화
-          dayClassName={dayClassName} // 날짜에 클래스 추가
-          locale={ko} // 언어 설정
-        />
+        <CalendarHeader>11월</CalendarHeader>
+        <WeekDays>
+          <WeekDay isSunday>일</WeekDay>
+          <WeekDay>월</WeekDay>
+          <WeekDay>화</WeekDay>
+          <WeekDay>수</WeekDay>
+          <WeekDay>목</WeekDay>
+          <WeekDay>금</WeekDay>
+          <WeekDay>토</WeekDay>
+        </WeekDays>
+        <DaysContainer>{generateCalendarDays()}</DaysContainer>
       </CalendarContainer>
     </Container>
   );
@@ -82,59 +90,65 @@ const InfoText = styled.p`
 
 const CalendarContainer = styled.div`
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #fff;
+  pointer-events: no;
+`;
 
-  .react-datepicker {
-    border: none;
-    border-radius: 12px;
-    background: #fff;
-    font-family: 'BMJUA', sans-serif;
-    pointer-events: none; /* 클릭 이벤트를 차단합니다 */
-  }
+const CalendarHeader = styled.h3`
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: #ffc0cb;
+`;
 
-  .react-datepicker__header {
-    background-color: transparent;
-    border-bottom: 1px solid #e0e0e0;
-    color: #333;
-    padding: 10px;
-    /* font-weight: 600; */
-  }
+const WeekDays = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
 
-  .react-datepicker__current-month {
-    font-size: 18px;
-    color: #333;
-  }
+const WeekDay = styled.div`
+  width: 14.2%;
+  text-align: center;
+  font-weight: bold;
+  color: ${({ isSunday }) =>
+    isSunday ? '#ffc0cb' : '#666'}; // 일요일은 빨간색
+`;
 
-  .react-datepicker__day {
-    border-radius: 50%;
-    color: #333;
-    font-size: 16px;
-    margin: 2px;
-    transition: background-color 0.3s ease;
-  }
+const DaysContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+`;
 
-  /* 숨기기 클래스 */
-  .hide-day {
-    visibility: hidden;
-  }
+const Day = styled.div`
+  width: 14.2%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${({ highlighted, isSunday }) =>
+    highlighted ? '#fff' : isSunday ? '#ffc0cb' : '#333'}; // 일요일은 빨간색
+  background-color: ${({ highlighted }) =>
+    highlighted ? '#ffb6c1' : 'transparent'};
+  border-radius: 50%;
+  margin: 2px 0;
+  transition: background-color 0.3s ease;
+  font-weight: ${({ highlighted }) => (highlighted ? 'bold' : 'normal')};
 
-  .react-datepicker__day--highlighted,
-  .react-datepicker__day--selected,
-  .react-datepicker__day--keyboard-selected {
+  &:hover {
     background-color: #ffb6c1;
     color: white;
   }
+`;
 
-  .react-datepicker__day:hover {
-    background-color: #ffb6c1;
-    color: white;
-  }
-
-  .react-datepicker__day--disabled {
-    color: #bdbdbd;
-  }
-
-  .react-datepicker__time-list-item--selected {
-    background-color: #ffb6c1 !important;
-    color: white !important;
-  }
+const EmptyDay = styled.div`
+  width: 14.2%;
+  height: 40px;
+  margin: 2px 0;
+  visibility: hidden;
 `;

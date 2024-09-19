@@ -122,10 +122,10 @@ const Countdown = styled.div`
 const TimeUnit = styled.div`
   text-align: center;
   font-size: 1.5rem;
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
 `;
 
 const TimeNumber = styled.div`
