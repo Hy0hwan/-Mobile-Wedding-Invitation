@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import DiscriptionImg from '../assets/imgs/graysparty.jpg';
 
 const Information = () => {
   const fixedDate = new Date(2024, 10, 16, 17, 20); // 2024년 11월 16일 오후 5:20
@@ -31,9 +32,13 @@ const Information = () => {
     <Container>
       <Header>예식 안내</Header>
       <HeadEn>Information</HeadEn>
-
       <InfoText>2024년 11월 16일 토요일 오후 05:20</InfoText>
       <InfoText>그레이스파티</InfoText>
+
+      {/* 이미지 삽입 */}
+      <ResponsiveImageContainer>
+        <ResponsiveImage src={DiscriptionImg} alt="그레이스파티 이미지" />
+      </ResponsiveImageContainer>
 
       <CalendarContainer>
         <CalendarHeader>11월</CalendarHeader>
@@ -151,4 +156,23 @@ const EmptyDay = styled.div`
   height: 40px;
   margin: 2px 0;
   visibility: hidden;
+`;
+
+// 반응형 정사각형 이미지 컨테이너
+const ResponsiveImageContainer = styled.div`
+  width: 100%;
+  max-width: 300px; /* 최대 크기 설정 */
+  position: relative;
+  margin: 20px 0;
+`;
+
+// 이미지 스타일링
+const ResponsiveImage = styled.img`
+  position: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
 `;
