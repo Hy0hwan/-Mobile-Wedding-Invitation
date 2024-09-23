@@ -15,6 +15,7 @@ import img10 from '../assets/imgs/10.jpeg';
 
 const WeddingImg = () => {
   const images = [img1, img5, img7, img2, img6, img8, img9, img10, img4];
+  //제발 성공해라
 
   return (
     <LightgalleryProvider>
