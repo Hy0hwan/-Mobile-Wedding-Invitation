@@ -15,7 +15,6 @@ import img10 from '../assets/imgs/10.jpeg';
 
 const WeddingImg = () => {
   const images = [img1, img5, img7, img2, img6, img8, img9, img10, img4];
-  //제발 성공해라
 
   return (
     <LightgalleryProvider>
@@ -48,6 +47,14 @@ const GalleryContainer = styled.div`
   max-width: 100vw;
   box-sizing: border-box;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr); // 2열로 조정
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr; // 1열로 조정
+  }
 `;
 
 const GalleryItem = styled.div`
