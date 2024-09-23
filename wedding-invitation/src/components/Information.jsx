@@ -151,22 +151,3 @@ const EmptyDay = styled.div`
   margin: 2px 0;
   visibility: hidden;
 `;
-
-// 반응형 정사각형 이미지 컨테이너
-const ResponsiveImageContainer = styled.div`
-  width: 100%;
-  max-width: 300px; /* 최대 크기 설정 */
-  position: relative;
-  margin: 20px 0;
-`;
-
-// 이미지 스타일링
-const ResponsiveImage = styled.img`
-  position: flex;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-`;
