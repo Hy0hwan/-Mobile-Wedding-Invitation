@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import DiscriptionImg from '../assets/imgs/graysparty.jpg';
 
 const Information = () => {
   const fixedDate = new Date(2024, 10, 16, 17, 20); // 2024년 11월 16일 오후 5:20
@@ -34,11 +33,6 @@ const Information = () => {
       <HeadEn>Information</HeadEn>
       <InfoText>2024년 11월 16일 토요일 오후 05:20</InfoText>
       <InfoText>그레이스파티</InfoText>
-
-      {/* 이미지 삽입 */}
-      <ResponsiveImageContainer>
-        <ResponsiveImage src={DiscriptionImg} alt="그레이스파티 이미지" />
-      </ResponsiveImageContainer>
 
       <CalendarContainer>
         <CalendarHeader>11월</CalendarHeader>

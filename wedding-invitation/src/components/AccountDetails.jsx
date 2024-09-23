@@ -20,8 +20,10 @@ const AccountDetails = () => {
   };
 
   // 신랑, 신부 계좌 정보
-  const groomAccount = '933-502-0025-1261'; // 신랑 계좌번호
-  const brideAccount = '933-502-0025-1261'; // 신부 계좌번호
+  const groomAccount = '국민 933-502-0025-1261'; // 신랑 계좌번호
+  const groomFAccount = '국민 837-21-0049-680 ';
+  const brideAccount = '신한 110-436-378297 '; // 신부 계좌번호
+  const brideMAccount = '신한 110-030-449237';
 
   return (
     <Container>
@@ -30,11 +32,16 @@ const AccountDetails = () => {
       {/* 신랑측 계좌 아코디언 */}
       <Accordion>
         <AccordionHeader onClick={() => setIsGroomOpen(!isGroomOpen)}>
-          신랑 측 계좌
-          <Arrow isOpen={isGroomOpen}></Arrow>
+          신랑 측<Arrow isOpen={isGroomOpen}></Arrow>
         </AccordionHeader>
         <AccordionContent isOpen={isGroomOpen}>
-          <span>[국민은행] </span>
+          <span>[신랑] </span>
+          <AccountNumber onClick={() => handleCopy(groomAccount)}>
+            {groomAccount}
+          </AccountNumber>
+        </AccordionContent>{' '}
+        <AccordionContent isOpen={isGroomOpen}>
+          <span>[혼주] </span>
           <AccountNumber onClick={() => handleCopy(groomAccount)}>
             {groomAccount}
           </AccountNumber>
@@ -44,11 +51,16 @@ const AccountDetails = () => {
       {/* 신부측 계좌 아코디언 */}
       <Accordion>
         <AccordionHeader onClick={() => setIsBrideOpen(!isBrideOpen)}>
-          신부 측 계좌
-          <Arrow isOpen={isBrideOpen}></Arrow>
+          신부 축<Arrow isOpen={isBrideOpen}></Arrow>
         </AccordionHeader>
         <AccordionContent isOpen={isBrideOpen}>
-          <span>[국민은행] </span>
+          <span>[신부] </span>
+          <AccountNumber onClick={() => handleCopy(brideAccount)}>
+            {brideAccount}
+          </AccountNumber>
+        </AccordionContent>
+        <AccordionContent isOpen={isBrideOpen}>
+          <span>[혼주] </span>
           <AccountNumber onClick={() => handleCopy(brideAccount)}>
             {brideAccount}
           </AccountNumber>
@@ -71,8 +83,8 @@ const Container = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 24px;
-  color: #333;
+  font-size: 18px;
+  color: #ffb6c1;
   margin-bottom: 30px;
 `;
 
@@ -86,20 +98,17 @@ const Accordion = styled.div`
 const AccordionHeader = styled.div`
   font-size: 18px;
   font-weight: bold;
-  background-color: #4a90e2; /* 더 세련된 파란색 */
-  color: white;
+  background-color: #cbcbcb; /* 더 세련된 파란색 */
+  color: #333;
   padding: 15px 20px;
   cursor: pointer;
   display: flex;
+  /* font-family: 'BMJUA', sans-serif; */
   justify-content: center; /* 가운데 정렬 */
   align-items: center;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center; /* 텍스트 가운데 정렬 */
-
-  &:hover {
-    background-color: #357abd; /* 버튼 호버 색상 */
-  }
 `;
 
 const AccordionContent = styled.div`
@@ -108,7 +117,7 @@ const AccordionContent = styled.div`
   height: ${({ isOpen }) => (isOpen ? 'auto' : '0')};
   overflow: hidden;
   border-radius: 0 0 10px 10px;
-  font-size: 16px;
+  font-size: 14px;
   color: #555;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: padding 0.3s ease, height 0.3s ease;
@@ -128,7 +137,7 @@ const Arrow = styled.span`
 
 const AccountNumber = styled.span`
   font-weight: bold;
-  color: #007bff;
+  color: #3b3b3b;
   cursor: pointer;
 
   &:hover {

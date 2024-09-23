@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import markimg from '../assets/imgs/mark.png';
 import roadImg from '../assets/imgs/roadmap.jpg'; // 약도 이미지
+import pin from '../assets/imgs/pin.svg'; // 핀 이미지
 
 const KakaoMap = () => {
-  const [isMapVisible, setIsMapVisible] = useState(false); // true면 지도, false면 약도 이미지
+  const [isMapVisible, setIsMapVisible] = useState(true); // true면 지도, false면 약도 이미지
   const mapUrl = '서울특별시 관악구 신림동 1485-1번지';
   const [copied, setCopied] = useState(false);
 
@@ -26,9 +26,9 @@ const KakaoMap = () => {
           const map = new window.kakao.maps.Map(container, options);
 
           // 커스텀 이미지로 마커 생성
-          const imageSrc = markimg; // 마커 이미지 URL
-          const imageSize = new window.kakao.maps.Size(64, 64); // 마커 이미지 크기
-          const imageOption = { offset: new window.kakao.maps.Point(27, 69) }; // 마커 이미지의 위치
+          const imageSrc = pin; // 핀 이미지 URL
+          const imageSize = new window.kakao.maps.Size(50, 50); // 마커 이미지 크기
+          const imageOption = { offset: new window.kakao.maps.Point(27, 49) }; // 마커 이미지의 위치
 
           const markerImage = new window.kakao.maps.MarkerImage(
             imageSrc,
