@@ -51,7 +51,9 @@ const StyledContainer = styled.div`
 
 const StyledImage = styled.img`
   width: 100%;
-  height: 350px;
+  max-height: 500px;
+  object-fit: cover;
+  object-position: top; /* 이미지를 위쪽 기준으로 보여줌 */
   margin-top: 20px;
   margin-bottom: 30px;
 `;
