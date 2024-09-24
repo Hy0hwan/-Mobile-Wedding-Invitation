@@ -35,9 +35,9 @@ function App() {
             <Information />
           </AnimatedComponent>
           <Divider />
-          {/* <AnimatedComponent>
+          <AnimatedComponent>
             <WeddingImg />
-          </AnimatedComponent> */}
+          </AnimatedComponent>
           <Divider />
           <AnimatedComponent>
             <KakaoMap />
