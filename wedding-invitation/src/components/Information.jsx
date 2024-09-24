@@ -1,75 +1,106 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const Information = () => {
-  const fixedDate = new Date(2024, 10, 16, 17, 20); // 2024년 11월 16일 오후 5:20
-  const year = fixedDate.getFullYear();
-  const month = fixedDate.getMonth(); // 11월 (JavaScript에서 월은 0부터 시작)
+const SaveTheDate = () => {
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [isDday, setIsDday] = useState(false);
 
-  // 해당 월의 첫 번째 날과 마지막 날을 계산
-  const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const updatedTimeLeft = calculateTimeLeft();
+      setTimeLeft(updatedTimeLeft);
 
-  // 날짜 배열을 만들기 위한 함수
-  const generateCalendarDays = () => {
-    const days = [];
-    for (let i = 0; i < firstDay; i++) {
-      days.push(<EmptyDay key={`empty-${i}`} />);
+      // Check if it is D-Day
+      if (
+        updatedTimeLeft.days === 0 &&
+        updatedTimeLeft.hours === 0 &&
+        updatedTimeLeft.minutes === 0 &&
+        updatedTimeLeft.seconds === 0
+      ) {
+        setIsDday(true);
+      } else {
+        setIsDday(false);
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  function calculateTimeLeft() {
+    const weddingDate = new Date('2024-11-16T00:00:00'); // 결혼식 날짜 설정
+    const now = new Date();
+    const difference = weddingDate - now;
+
+    if (difference <= 0) {
+      // If the difference is 0 or negative, it's D-Day or past
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
     }
-    for (let i = 1; i <= daysInMonth; i++) {
-      const dayIndex = (firstDay + i - 1) % 7; // 요일 인덱스 계산
-      days.push(
-        <Day key={i} highlighted={i === 16} isSunday={dayIndex === 0}>
-          {i}
-        </Day>
-      );
-    }
-    return days;
-  };
+
+    let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor(
+      (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    return { days, hours, minutes, seconds };
+  }
 
   return (
     <Container>
-      <Header>예식 안내</Header>
-      <HeadEn>Information</HeadEn>
-      <InfoText>2024년 11월 16일 토요일 오후 05:20</InfoText>
-      <InfoText>그레이스파티</InfoText>
-
-      <CalendarContainer>
-        <CalendarHeader>11월</CalendarHeader>
-        <WeekDays>
-          <WeekDay isSunday>일</WeekDay>
-          <WeekDay>월</WeekDay>
-          <WeekDay>화</WeekDay>
-          <WeekDay>수</WeekDay>
-          <WeekDay>목</WeekDay>
-          <WeekDay>금</WeekDay>
-          <WeekDay>토</WeekDay>
-        </WeekDays>
-        <DaysContainer>{generateCalendarDays()}</DaysContainer>
-      </CalendarContainer>
+      {isDday ? (
+        <DdayMessage>🎉 D-Day! 🎉</DdayMessage>
+      ) : (
+        <>
+          <Header>결혼식 까지</Header>
+          <HeadEn>D-Day</HeadEn>
+          <Countdown>
+            <TimeUnit>
+              <TimeNumber>{timeLeft.days}</TimeNumber>
+              <TimeLabel>Days</TimeLabel>
+            </TimeUnit>
+            <Colon>:</Colon>
+            <TimeUnit>
+              <TimeNumber>{timeLeft.hours}</TimeNumber>
+              <TimeLabel>Hours</TimeLabel>
+            </TimeUnit>
+            <Colon>:</Colon>
+            <TimeUnit>
+              <TimeNumber>{timeLeft.minutes}</TimeNumber>
+              <TimeLabel>Min</TimeLabel>
+            </TimeUnit>
+            <Colon>:</Colon>
+            <TimeUnit>
+              <TimeNumber>{timeLeft.seconds}</TimeNumber>
+              <TimeLabel>Sec</TimeLabel>
+            </TimeUnit>
+          </Countdown>
+        </>
+      )}
+      <Comment>
+        승원 ❤️ 소정의 결혼식이 <Highlighted>{timeLeft.days + 1}일</Highlighted>
+        남았습니다.
+      </Comment>
     </Container>
   );
 };
 
-export default Information;
+export default SaveTheDate;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 600px;
-  margin: 20px auto;
+  padding: 20px;
 `;
 
-const Header = styled.h2`
+const Header = styled.p`
   text-align: center;
-  font-size: 28px;
+  font-size: 24px;
   color: #333;
   position: relative;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  font-weight: 600;
+  font-weight: bold;
 `;
 
 const HeadEn = styled.p`
@@ -80,74 +111,54 @@ const HeadEn = styled.p`
   color: #bbb;
 `;
 
-const InfoText = styled.p`
-  font-size: 18px;
-  color: #666;
-  margin: 10px 0;
-  font-weight: 300;
+const Comment = styled.p`
+  font-size: 1.2rem;
+  color: #333; /* 텍스트 색상을 기본 회색으로 설정 */
+  margin-top: 40px; /* 위쪽 여백 추가 */
+  font-size: 16px;
 `;
 
-const CalendarContainer = styled.div`
-  margin-top: 20px;
+const Highlighted = styled.span`
+  color: #ffb6c1; /* 강조할 색상 */
+  font-weight: bold; /* 텍스트 두껍게 설정 */
+`;
+
+const Countdown = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 12px;
-  padding: 20px;
-  background-color: #fff;
-  pointer-events: none;
+  align-items: center; /* 세로 중앙 정렬 */
+  gap: 5px; /* 시간 단위 사이의 간격을 줄임 */
 `;
 
-const CalendarHeader = styled.h3`
-  margin-bottom: 20px;
-  font-size: 22px;
-  color: #ffc0cb;
-`;
-
-const WeekDays = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-`;
-
-const WeekDay = styled.div`
-  width: 14.2%;
+const TimeUnit = styled.div`
   text-align: center;
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+`;
+
+const TimeNumber = styled.div`
+  font-size: 2rem;
   font-weight: bold;
-  color: ${({ isSunday }) =>
-    isSunday ? '#ffc0cb' : '#666'}; // 일요일은 빨간색
 `;
 
-const DaysContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
+const TimeLabel = styled.div`
+  font-size: 0.875rem;
+  color: #666;
 `;
 
-const Day = styled.div`
-  width: 14.2%;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: ${({ highlighted, isSunday }) =>
-    highlighted ? '#fff' : isSunday ? '#ffc0cb' : '#333'}; // 일요일은 빨간색
-  background-color: ${({ highlighted }) =>
-    highlighted ? '#ffb6c1' : 'transparent'};
-  border-radius: 50%;
-  margin: 2px 0;
-  transition: background-color 0.3s ease;
-  font-weight: ${({ highlighted }) => (highlighted ? 'bold' : 'normal')};
-
-  &:hover {
-    background-color: #ffb6c1;
-    color: white;
-  }
+const Colon = styled.span`
+  font-size: 1.5rem; /* 콜론의 크기 */
+  color: #333; /* 콜론 색상 */
 `;
 
-const EmptyDay = styled.div`
-  width: 14.2%;
-  height: 40px;
-  margin: 2px 0;
-  visibility: hidden;
+const DdayMessage = styled.div`
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff4500; /* 특별한 색상으로 강조 */
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
