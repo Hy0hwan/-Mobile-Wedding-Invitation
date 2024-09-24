@@ -77,6 +77,7 @@ const GalleryContainer = styled.div`
   max-width: 100vw;
   box-sizing: border-box;
   margin: 0 auto;
+  margin-bottom: 50px;
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(3, 1fr);

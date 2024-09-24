@@ -60,6 +60,7 @@ const Container = styled.div`
   justify-content: center;
   max-width: 600px;
   margin: 20px auto;
+  margin-bottom: 50px;
 `;
 
 const Header = styled.h2`

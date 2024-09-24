@@ -96,6 +96,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: 20px;
+  margin-bottom: 50px;
 `;
 
 const Header = styled.p`

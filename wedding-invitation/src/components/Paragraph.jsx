@@ -47,6 +47,7 @@ const StyledContainer = styled.div`
   align-items: center;
   width: 100%; /* 전체 너비를 유지 */
   margin-top: 70px;
+  margin-bottom: 50px;
 `;
 
 const StyledImage = styled.img`
