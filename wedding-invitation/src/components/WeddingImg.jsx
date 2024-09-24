@@ -1,15 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import LightGallery from 'lightgallery/react';
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-thumbnail.css';
-import 'lightgallery/css/lg-fullscreen.css';
-import 'lightgallery/css/lg-zoom.css';
-
-// LightGallery 플러그인 임포트
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgFullscreen from 'lightgallery/plugins/fullscreen';
-import lgZoom from 'lightgallery/plugins/zoom';
 
 import img1 from '../assets/imgs/1.jpeg';
 import img2 from '../assets/imgs/2.jpeg';
@@ -26,18 +16,11 @@ const WeddingImg = () => {
 
   return (
     <GalleryContainer>
-      <LightGallery
-        speed={500}
-        plugins={[lgThumbnail, lgFullscreen, lgZoom]} // 플러그인 추가
-      >
-        {images.map((src, index) => (
-          <a href={src} key={index}>
-            <GalleryItem>
-              <img src={src} alt={`Gallery item ${index + 1}`} />
-            </GalleryItem>
-          </a>
-        ))}
-      </LightGallery>
+      {images.map((src, index) => (
+        <GalleryItem>
+          <img src={src} alt={`Gallery item ${index + 1}`} />
+        </GalleryItem>
+      ))}
     </GalleryContainer>
   );
 };
@@ -55,11 +38,11 @@ const GalleryContainer = styled.div`
   margin: 0 auto;
 
   @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); // 2열로 조정
   }
 
   @media (max-width: 480px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; // 1열로 조정
   }
 `;
 
