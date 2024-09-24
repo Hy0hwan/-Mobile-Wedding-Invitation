@@ -223,12 +223,12 @@ const RoadMapImage = styled.img`
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
   margin-top: 20px;
 `;
 
 const Button = styled.button`
-  background-color: #a6d8e3; /* 파스텔 블루 */
+  background-color: #f8c8d6; /* 연한 파스텔 핑크 */
   color: white;
   border: none;
   padding: 10px 20px;
@@ -240,7 +240,7 @@ const Button = styled.button`
   transition: background-color 0.3s ease; /* 배경색 전환 효과 */
 
   &:hover {
-    background-color: #84c1d1; /* 호버 시 더 밝은 파스텔 블루 */
+    background-color: #f2a6b0; /* 호버 시 더 밝은 핑크 */
   }
 `;
 
