@@ -52,7 +52,7 @@ export default WeddingImg;
 
 const Header = styled.h2`
   text-align: center;
-  font-size: 28px;
+  font-size: 22px;
   color: #333;
   position: relative;
   margin-bottom: 20px;

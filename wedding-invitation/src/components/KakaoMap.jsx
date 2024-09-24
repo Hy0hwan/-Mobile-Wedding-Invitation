@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import {
+  FaMapMarkerAlt,
+  FaCar,
+  FaSubway,
+  FaBus,
+  FaPhone,
+} from 'react-icons/fa';
 import roadImg from '../assets/imgs/roadmap.jpg'; // 약도 이미지
 import pin from '../assets/imgs/pin.svg'; // 핀 이미지
 
@@ -83,20 +90,38 @@ const KakaoMap = () => {
       </ButtonContainer>
 
       <ExplanContainer>
-        <ExplanHeader>📍주소</ExplanHeader>
+        <ExplanHeader>
+          <Icon color="#f28d9b">
+            <FaMapMarkerAlt />
+          </Icon>{' '}
+          주소
+        </ExplanHeader>
         <Explan>서울시 관악구 남부순환로 1440</Explan>
         <Explan>[관악구 신림동 1485-1번지]</Explan>
-        <ExplanHeader>🚦교통편</ExplanHeader>
+        <ExplanHeader>
+          <Icon color="#b6e4ff">
+            <FaCar />
+          </Icon>{' '}
+          교통편
+        </ExplanHeader>
         <ExplanWrapper>
-          <Explan>자가용 : </Explan>
+          <Explan>자가용 :</Explan>
           <ExplanDetail>시흥 IC방향 시 유턴 / 사당 방향 시 직진</ExplanDetail>
         </ExplanWrapper>
         <ExplanWrapper>
-          <Explan>지하철 : </Explan>
+          <Explan>
+            <Icon color="#ffcc7a">
+              <FaSubway /> 지하철 :
+            </Icon>
+          </Explan>
           <ExplanDetail>신림역 5번출구 셔틀 버스 운행</ExplanDetail>
         </ExplanWrapper>
         <ExplanWrapper>
-          <Explan>버스 : </Explan>
+          <Explan>
+            <Icon color="#b3e5f4">
+              <FaBus /> 버스 :
+            </Icon>
+          </Explan>
           <ExplanList>
             <ExplanDetail>500번 / 504번 / 643번 / 651번</ExplanDetail>
             <ExplanDetail>5413번 / 5528번 / 5530번 / 5535번</ExplanDetail>
@@ -107,7 +132,12 @@ const KakaoMap = () => {
             </ExplanDetail>
           </ExplanList>
         </ExplanWrapper>
-        <ExplanHeader>💁INFO</ExplanHeader>
+        <ExplanHeader>
+          <Icon color="#a6d8e3">
+            <FaPhone />
+          </Icon>{' '}
+          INFO
+        </ExplanHeader>
         <ExplanDetail>TEL : 02-858-1122</ExplanDetail>
       </ExplanContainer>
       <Toast visible={copied}>클립보드에 복사되었습니다!</Toast>
@@ -124,7 +154,7 @@ const Container = styled.div`
 
 const Header = styled.p`
   text-align: center;
-  font-size: 24px;
+  font-size: 22px;
   color: #333;
   position: relative;
   margin-bottom: 20px;
@@ -143,18 +173,22 @@ const HeadEn = styled.p`
 
 const ExplanContainer = styled.div`
   text-align: left;
-  padding: 0 20px; /* 좌우 여백 추가 */
+  padding: 20px 20px; /* 좌우 여백 추가 */
+  background-color: #f9f9f9; /* 배경색 추가 */
+  border-radius: 8px; /* 모서리 둥글게 */
 `;
 
 const ExplanHeader = styled.p`
-  color: #bbb;
-  font-size: 15px;
+  display: flex;
+  align-items: center; /* 아이콘과 텍스트 정렬 */
+  color: #4a90e2; /* 아이콘과 헤더 색상 변경 */
+  font-size: 16px; /* 폰트 크기 조정 */
   margin: 20px 0 10px; /* 상단 여백과 하단 여백 조정 */
 `;
 
 const Explan = styled.p`
   color: #333;
-  font-size: 12px;
+  font-size: 14px; /* 폰트 크기 증가 */
   margin-left: 10px; /* 텍스트와 구분을 위한 여백 */
 `;
 
@@ -166,7 +200,7 @@ const ExplanWrapper = styled.div`
 
 const ExplanDetail = styled.p`
   color: #333;
-  font-size: 12px;
+  font-size: 14px; /* 폰트 크기 증가 */
   margin-left: 10px; /* 레이블과 텍스트 간의 여백 */
   flex: 1; /* 레이블과 상세 내용 사이에 여백을 추가 */
 `;
@@ -194,7 +228,7 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #4a90e2; /* 더 세련된 파란색 */
+  background-color: #a6d8e3; /* 파스텔 블루 */
   color: white;
   border: none;
   padding: 10px 20px;
@@ -203,25 +237,29 @@ const Button = styled.button`
   cursor: pointer;
   font-size: 13px;
   font-family: 'BMJUA', sans-serif; /* 버튼에 폰트 적용 */
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease; /* 배경색 전환 효과 */
 
   &:hover {
-    background-color: #357abd; /* 버튼 호버 색상 */
-    transform: scale(1.05); /* 버튼 호버 시 확대 효과 */
+    background-color: #84c1d1; /* 호버 시 더 밝은 파스텔 블루 */
   }
 `;
 
 const Toast = styled.div`
   position: fixed;
-  bottom: ${({ visible }) => (visible ? '30px' : '-100px')}; /* 토스트 위치 */
+  bottom: ${({ visible }) => (visible ? '30px' : '-100px')};
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.75);
   color: white;
-  padding: 12px 24px;
-  border-radius: 25px;
-  font-family: 'BMJUA', sans-serif;
+  padding: 10px 20px;
+  border-radius: 20px;
   font-size: 13px;
-  transition: bottom 0.3s ease-in-out;
-  opacity: ${({ visible }) => (visible ? 1 : 0)}; /* 나타날 때 투명도 */
+  transition: bottom 0.3s ease, opacity 0.3s ease;
+  opacity: ${({ visible }) => (visible ? 1 : 0)};
+  font-family: 'BMJUA', sans-serif;
+`;
+
+const Icon = styled.div`
+  margin-right: 5px; /* 아이콘과 텍스트 간의 간격 */
+  color: ${(props) => props.color}; /* 아이콘 색상 변경 */
 `;

@@ -59,14 +59,17 @@ const SaveTheDate = () => {
               <TimeNumber>{timeLeft.days}</TimeNumber>
               <TimeLabel>Days</TimeLabel>
             </TimeUnit>
+            <Colon>:</Colon>
             <TimeUnit>
               <TimeNumber>{timeLeft.hours}</TimeNumber>
               <TimeLabel>Hours</TimeLabel>
             </TimeUnit>
+            <Colon>:</Colon>
             <TimeUnit>
               <TimeNumber>{timeLeft.minutes}</TimeNumber>
               <TimeLabel>Min</TimeLabel>
             </TimeUnit>
+            <Colon>:</Colon>
             <TimeUnit>
               <TimeNumber>{timeLeft.seconds}</TimeNumber>
               <TimeLabel>Sec</TimeLabel>
@@ -75,7 +78,11 @@ const SaveTheDate = () => {
         </>
       )}
       <Comment>
-        승원 ❤️ 소정의 결혼식이 {timeLeft.days + 1}일 남았습니다.
+        {isDday
+          ? '승원 ❤️ 소정의 결혼식에 오셔서 축하해주세요.'
+          : `승원 ❤️ 소정의 결혼식이 `}
+        <Highlighted>{timeLeft.days + 1}일</Highlighted>
+        {isDday ? '' : ' 남았습니다.'}
       </Comment>
     </Container>
   );
@@ -93,7 +100,7 @@ const Container = styled.div`
 
 const Header = styled.p`
   text-align: center;
-  font-size: 24px;
+  font-size: 22px;
   color: #333;
   position: relative;
   font-weight: bold;
@@ -102,7 +109,7 @@ const Header = styled.p`
 const HeadEn = styled.p`
   font-family: 'Blacksword', cursive;
   font-size: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   margin-top: -15px;
   color: #bbb;
 `;
@@ -114,18 +121,23 @@ const Comment = styled.p`
   font-size: 16px;
 `;
 
+const Highlighted = styled.span`
+  color: #ffb6c1; /* 강조할 색상 */
+  font-weight: bold; /* 텍스트 두껍게 설정 */
+`;
+
 const Countdown = styled.div`
   display: flex;
-  gap: 10px;
+  align-items: center; /* 세로 중앙 정렬 */
+  gap: 5px; /* 시간 단위 사이의 간격을 줄임 */
 `;
 
 const TimeUnit = styled.div`
   text-align: center;
   font-size: 1.5rem;
-  /* background-color: #f5f5f5; */
   padding: 10px;
   border-radius: 5px;
-  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  background-color: #f0f0f0;
 `;
 
 const TimeNumber = styled.div`
@@ -138,10 +150,16 @@ const TimeLabel = styled.div`
   color: #666;
 `;
 
+const Colon = styled.span`
+  font-size: 1.5rem; /* 콜론의 크기 */
+  font-weight: bold; /* 콜론을 두껍게 */
+  color: #333; /* 콜론 색상 */
+`;
+
 const DdayMessage = styled.div`
   font-size: 2rem;
   font-weight: bold;
-  color: #ff4500; /* 특별한 색상으로 강조 */
+  color: #ffb6c1; /* 특별한 색상으로 강조 */
   text-align: center;
   background-color: #fff;
   padding: 20px;

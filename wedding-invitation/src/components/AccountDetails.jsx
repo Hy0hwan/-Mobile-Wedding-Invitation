@@ -36,13 +36,13 @@ const AccountDetails = () => {
         </AccordionHeader>
         <AccordionContent isOpen={isGroomOpen}>
           <AccountRow>
-            <span>[신랑] </span>
+            <BoldText>[신랑] </BoldText>
             <AccountNumber onClick={() => handleCopy(groomAccount)}>
               {groomAccount}
             </AccountNumber>
           </AccountRow>
           <AccountRow>
-            <span>[혼주] </span>
+            <BoldText>[혼주] </BoldText>
             <AccountNumber onClick={() => handleCopy(groomFAccount)}>
               {groomFAccount}
             </AccountNumber>
@@ -57,13 +57,13 @@ const AccountDetails = () => {
         </AccordionHeader>
         <AccordionContent isOpen={isBrideOpen}>
           <AccountRow>
-            <span>[신부] </span>
+            <BoldText>[신부] </BoldText>
             <AccountNumber onClick={() => handleCopy(brideAccount)}>
               {brideAccount}
             </AccountNumber>
           </AccountRow>
           <AccountRow>
-            <span>[혼주] </span>
+            <BoldText>[혼주] </BoldText>
             <AccountNumber onClick={() => handleCopy(brideMAccount)}>
               {brideMAccount}
             </AccountNumber>
@@ -86,9 +86,9 @@ const Container = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 20px;
-  color: #ffb6c1;
-  margin-bottom: 25px;
+  font-size: 22px;
+  /* color: #ffb6c1; */
+  margin-bottom: 45px;
 `;
 
 const Accordion = styled.div`
@@ -100,7 +100,7 @@ const Accordion = styled.div`
 
 const AccordionHeader = styled.div`
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 900;
   background-color: #e9ecef;
   color: #333;
   padding: 15px 20px;
@@ -151,6 +151,10 @@ const AccountNumber = styled.span`
     text-decoration: underline;
     color: #0056b3;
   }
+`;
+
+const BoldText = styled.span`
+  font-weight: bold; /* 글씨 굵게 */
 `;
 
 const Toast = styled.div`
