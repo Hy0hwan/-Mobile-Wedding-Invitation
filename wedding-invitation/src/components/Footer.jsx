@@ -27,7 +27,7 @@ const Footer = () => {
           title: '승원 ❤️ 소정 결혼합니다!',
           description: '우리의 결혼을 축하해주세요 🥰',
           imageUrl:
-            'https://nurim-data-origin.s3.ap-northeast-2.amazonaws.com/%EB%B0%B0%EB%84%88/main.jpeg', // 여기에 자신의 이미지 URL을 입력하세요.
+            'https://nurim-test.s3.ap-northeast-2.amazonaws.com/%EB%B0%B0%EB%84%88/KakaoTalk_Photo_2024-09-25-03-05-15.jpeg', // 여기에 자신의 이미지 URL을 입력하세요.
           link: {
             mobileWebUrl: 'https://mobile-wedding-invitation-sandy.vercel.app/', // 여기에 자신의 웹사이트 링크를 입력하세요.
             webUrl: 'https://mobile-wedding-invitation-sandy.vercel.app/',
