@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { SlideshowLightbox } from 'lightbox.js-react';
-import 'lightbox.js-react/dist/index.css';
+import { Lightbox } from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css'; // 스타일 추가
 
 import img1 from '../assets/imgs/1.jpeg';
 import img2 from '../assets/imgs/2.jpeg';
@@ -31,13 +31,13 @@ const WeddingImg = () => {
         </GalleryItem>
       ))}
       {isOpen && (
-        <SlideshowLightbox
-          images={images.map((src) => ({ src }))} // Lightbox에 이미지를 전달
+        <Lightbox
+          open={isOpen}
+          close={() => setIsOpen(false)}
+          slides={images.map((src) => ({ src }))} // Lightbox에 이미지를 전달
           currentIndex={currentImageIndex}
-          onClose={() => setIsOpen(false)}
-          enableKeyboardNavigation // 키보드 내비게이션 활성화
-          // 전체화면 모드로 전환하기 위한 설정
-          enableFullscreen // 전체화면 모드 활성화
+          onCurrentIndexChange={setCurrentImageIndex} // 현재 인덱스 변경 핸들러
+          // 추가적인 옵션을 여기에 설정할 수 있습니다.
         />
       )}
     </GalleryContainer>
@@ -61,7 +61,7 @@ const GalleryContainer = styled.div`
   }
 
   @media (max-width: 480px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 `;
 
