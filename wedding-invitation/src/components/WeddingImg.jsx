@@ -24,27 +24,49 @@ const WeddingImg = () => {
   };
 
   return (
-    <GalleryContainer>
-      {images.map((src, index) => (
-        <GalleryItem key={index} onClick={() => openLightbox(index)}>
-          <img src={src} alt={`Gallery item ${index + 1}`} />
-        </GalleryItem>
-      ))}
-      {isOpen && (
-        <Lightbox
-          open={isOpen}
-          close={() => setIsOpen(false)}
-          slides={images.map((src) => ({ src }))} // Lightbox에 이미지를 전달
-          currentIndex={currentImageIndex}
-          onCurrentIndexChange={setCurrentImageIndex} // 현재 인덱스 변경 핸들러
-          // 추가적인 옵션을 여기에 설정할 수 있습니다.
-        />
-      )}
-    </GalleryContainer>
+    <div>
+      <Header>갤러리</Header>
+      <HeadEn>Gallery</HeadEn>
+      <GalleryContainer>
+        {images.map((src, index) => (
+          <GalleryItem key={index} onClick={() => openLightbox(index)}>
+            <img src={src} alt={`Gallery item ${index + 1}`} />
+          </GalleryItem>
+        ))}
+        {isOpen && (
+          <Lightbox
+            open={isOpen}
+            close={() => setIsOpen(false)}
+            slides={images.map((src) => ({ src }))} // Lightbox에 이미지를 전달
+            currentIndex={currentImageIndex}
+            onCurrentIndexChange={setCurrentImageIndex} // 현재 인덱스 변경 핸들러
+            // 추가적인 옵션을 여기에 설정할 수 있습니다.
+          />
+        )}
+      </GalleryContainer>
+    </div>
   );
 };
 
 export default WeddingImg;
+
+const Header = styled.h2`
+  text-align: center;
+  font-size: 28px;
+  color: #333;
+  position: relative;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  font-weight: 600;
+`;
+
+const HeadEn = styled.p`
+  font-family: 'Blacksword', cursive;
+  font-size: 14px;
+  margin-bottom: 20px;
+  margin-top: -15px;
+  color: #bbb;
+`;
 
 const GalleryContainer = styled.div`
   display: grid;
