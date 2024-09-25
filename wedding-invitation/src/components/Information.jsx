@@ -31,7 +31,9 @@ const Information = () => {
     <Container>
       <Header>예식 안내</Header>
       <HeadEn>Information</HeadEn>
-      <InfoText>2024년 11월 16일 토요일 오후 05:20</InfoText>
+      <InfoText>
+        2024년 <SignatureColor>11월 16일 토요일 오후 05:20</SignatureColor>
+      </InfoText>
       <InfoText>그레이스파티</InfoText>
 
       <CalendarContainer>
@@ -83,7 +85,7 @@ const HeadEn = styled.p`
 
 const InfoText = styled.p`
   font-size: 18px;
-  color: #ffb6c1;
+  color: #666;
   margin: 10px 0;
   font-weight: 300;
 `;
@@ -151,4 +153,8 @@ const EmptyDay = styled.div`
   height: 40px;
   margin: 2px 0;
   visibility: hidden;
+`;
+
+const SignatureColor = styled.span`
+  color: #ffb6c1;
 `;
