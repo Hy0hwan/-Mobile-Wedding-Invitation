@@ -20,7 +20,7 @@ const AccountDetails = () => {
       });
   };
 
-  const groomAccount = '국민 933-502-0025-1261';
+  const groomAccount = '국민 933502-0025-1261';
   const groomFAccount = '국민 837-21-0049-680';
   const brideAccount = '신한 110-436-378297';
   const brideMAccount = '신한 110-030-449237';
