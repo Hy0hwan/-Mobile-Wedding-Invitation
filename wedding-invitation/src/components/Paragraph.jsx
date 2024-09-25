@@ -29,10 +29,10 @@ const Paragraph = () => {
 
       <StyledText>--</StyledText>
 
-      <StyledText>이희용의 아들 승원</StyledText>
-      <StyledText>
+      <StyledHighlightedText>이희용의 아들 승원</StyledHighlightedText>
+      <StyledHighlightedText>
         이경희의 <HiddenLetter>ㄱ</HiddenLetter>딸 소정
-      </StyledText>
+      </StyledHighlightedText>
     </StyledContainer>
   );
 };
@@ -93,7 +93,7 @@ const StyledLeftText = styled.p`
   text-align: left;
   width: 100%;
   padding-left: 20px;
-  color: #333;
+  color: #ffb6c1;
 `;
 
 const StyledLine = styled.div`
@@ -117,4 +117,10 @@ const StyledInfoText = styled.p`
 // 느낌표 기울기 적용
 const ItalicExclamationMark = styled.span`
   font-style: italic;
+`;
+
+// 하이라이트된 텍스트 스타일 (색상 변경 적용)
+const StyledHighlightedText = styled(StyledText)`
+  color: #ffb6c1; /* 연한 핑크색 적용 */
+  text-align: center;
 `;

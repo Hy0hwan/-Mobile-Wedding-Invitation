@@ -83,7 +83,7 @@ const HeadEn = styled.p`
 
 const InfoText = styled.p`
   font-size: 18px;
-  color: #666;
+  color: #ffb6c1;
   margin: 10px 0;
   font-weight: 300;
 `;
