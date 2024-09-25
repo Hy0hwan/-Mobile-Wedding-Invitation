@@ -200,7 +200,7 @@ const ExplanWrapper = styled.div`
 
 const ExplanDetail = styled.p`
   color: #333;
-  font-size: 13px; /* 폰트 크기 증가 */
+  font-size: 14px; /* 폰트 크기 증가 */
   margin-left: 10px; /* 레이블과 텍스트 간의 여백 */
   flex: 1; /* 레이블과 상세 내용 사이에 여백을 추가 */
 `;
