@@ -123,13 +123,14 @@ const KakaoMap = () => {
             </Icon>
           </Explan>
           <ExplanList>
-            <ExplanDetail>500번 / 504번 / 643번 / 651번</ExplanDetail>
-            <ExplanDetail>5413번 / 5528번 / 5530번 / 5535번</ExplanDetail>
-            <ExplanDetail>5615번 / 5616번 / 6512번</ExplanDetail>
-            <ExplanDetail>9번 / 9-3번</ExplanDetail>
-            <ExplanDetail>
-              정거장 : 관악구 보훈회관 (신림 푸르지오)
-            </ExplanDetail>
+            <SmallExplanDetail>500번 /504번 / 643번 / 651번</SmallExplanDetail>
+            <SmallExplanDetail>
+              5413번 / 5528번 / 5530번 / 5535번
+            </SmallExplanDetail>
+            <SmallExplanDetail>5615번 / 5616번 / 6512번</SmallExplanDetail>
+            <SmallExplanDetail>9번 / 9-3번</SmallExplanDetail>
+            <SmallExplanDetail>정거장 : 관악구 보훈회관</SmallExplanDetail>
+            <SmallExplanDetail>정거장 : 신림 푸르지오</SmallExplanDetail>
           </ExplanList>
         </ExplanWrapper>
         <ExplanHeader>
@@ -188,8 +189,10 @@ const ExplanHeader = styled.p`
 
 const Explan = styled.p`
   color: #333;
-  font-size: 14px; /* 폰트 크기 증가 */
-  margin-left: 10px; /* 텍스트와 구분을 위한 여백 */
+  font-size: 15px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center; /* 아이콘과 텍스트가 한 줄에 표시되도록 설정 */
 `;
 
 const ExplanWrapper = styled.div`
@@ -197,16 +200,20 @@ const ExplanWrapper = styled.div`
   align-items: center;
   margin-bottom: 10px;
 `;
-
 const ExplanDetail = styled.p`
   color: #333;
-  font-size: 14px; /* 폰트 크기 증가 */
+  font-size: 12px; /* 폰트 크기 증가 */
   margin-left: 10px; /* 레이블과 텍스트 간의 여백 */
   flex: 1; /* 레이블과 상세 내용 사이에 여백을 추가 */
 `;
 
 const ExplanList = styled.div`
-  margin-left: 10px; /* 리스트 항목과 레이블 간의 여백 */
+  margin-left: 25px; /* 리스트 항목과 아이콘 간의 여백 추가 */
+`;
+
+const SmallExplanDetail = styled(ExplanDetail)`
+  font-size: 12px; /* 작게 설정 */
+  color: #333; /* 색상을 조금 더 연하게 변경 */
 `;
 
 const MapContainer = styled.div`
@@ -229,37 +236,54 @@ const ButtonContainer = styled.div`
 
 const Button = styled.button`
   background-color: #f8c8d6; /* 연한 파스텔 핑크 */
-  color: white;
   border: none;
+  font-family: 'BMJUA', sans-serif;
+
   padding: 10px 20px;
-  margin: 0 10px;
-  border-radius: 25px; /* 버튼의 모서리를 둥글게 */
+  margin: 0 5px;
+  border-radius: 8px;
+  color: white;
   cursor: pointer;
-  font-size: 13px;
-  font-family: 'BMJUA', sans-serif; /* 버튼에 폰트 적용 */
-  transition: background-color 0.3s ease; /* 배경색 전환 효과 */
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #f2a6b0; /* 호버 시 더 밝은 핑크 */
+    background-color: #ff7f8c;
   }
 `;
 
-const Toast = styled.div`
-  position: fixed;
-  bottom: ${({ visible }) => (visible ? '30px' : '-100px')};
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.75);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 13px;
-  transition: bottom 0.3s ease, opacity 0.3s ease;
-  opacity: ${({ visible }) => (visible ? 1 : 0)};
-  font-family: 'BMJUA', sans-serif;
+const Icon = styled.span`
+  color: ${(props) => props.color || '#333'};
+  font-size: 15px;
+  margin-right: 10px;
 `;
 
-const Icon = styled.div`
-  margin-right: 5px; /* 아이콘과 텍스트 간의 간격 */
-  color: ${(props) => props.color}; /* 아이콘 색상 변경 */
+const Toast = styled.div`
+  display: ${({ visible }) => (visible ? 'block' : 'none')};
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  z-index: 1000;
+  animation: fadeInOut 3s forwards;
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 `;
