@@ -81,7 +81,7 @@ const SaveTheDate = () => {
         {isDday
           ? '승원 ❤️ 소정의 결혼식에 오셔서 축하해주세요.'
           : `승원 ❤️ 소정의 결혼식이 `}
-        <Highlighted>{timeLeft.days + 1}일</Highlighted>
+        {/* <Highlighted>{timeLeft.days + 1}일</Highlighted> */}
         {isDday ? '' : ' 남았습니다.'}
       </Comment>
     </Container>
