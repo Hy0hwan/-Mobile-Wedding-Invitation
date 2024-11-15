@@ -19,7 +19,7 @@ const KakaoMap = () => {
     if (isMapVisible) {
       // 카카오맵 API 로드
       const script = document.createElement('script');
-      script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=c2a7efad4c20eb7a22a24670f5aee20d&autoload=false`;
+      script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=27052909e8dc72ccf5fcc28a97d070b9&autoload=false`;
       script.async = true;
       document.head.appendChild(script);
 
